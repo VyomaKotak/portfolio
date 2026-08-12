@@ -14,24 +14,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#faf9f6;
-    --paper-2:#f2f0ea;
-    --card:#ffffff;
-    --ink:#1a1a17;
-    --ink-2:#4d4a43;
-    --ink-3:#87837a;
-    --line:#e6e2d9;
-    --line-2:#d8d3c7;
-    --plot:#e9645a;      /* coral - primary data ink */
-    --plot-2:#2f6f6b;    /* teal */
-    --plot-3:#e0a13c;    /* ochre */
-    --plot-4:#5566c4;    /* indigo */
-    --plot-5:#8a5aa8;    /* plum */
-    --grid:#efece4;
+    --paper:#0b0e14;       /* obsidian base */
+    --paper-2:#10141d;     /* panel band */
+    --card:#141924;        /* card */
+    --card-2:#1a2030;      /* hover card */
+    --ink:#eef2f8;         /* primary text */
+    --ink-2:#9aa4b8;       /* secondary */
+    --ink-3:#5f6980;       /* tertiary */
+    --line:#222835;
+    --line-2:#2e3646;
+    --plot:#22d3ee;        /* cyan - primary data ink */
+    --plot-2:#34d399;      /* emerald */
+    --plot-3:#fbbf24;      /* amber */
+    --plot-4:#818cf8;      /* indigo */
+    --plot-5:#f472b6;      /* pink */
+    --grid:#161b26;
+    --plot-soft:rgba(34,211,238,.12);
     --display:'Fraunces',Georgia,serif;
     --body:'Inter',system-ui,sans-serif;
     --mono:'JetBrains Mono',ui-monospace,monospace;
-    --shadow:0 1px 2px rgba(26,26,23,.04),0 10px 30px -20px rgba(26,26,23,.28);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -24px rgba(0,0,0,.7);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -44,7 +46,9 @@
   /* faint plotting-grid backdrop */
   body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
     background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-    background-size:34px 34px;opacity:.5;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.12))}
+    background-size:34px 34px;opacity:.7;mask-image:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.08))}
+  body::after{content:"";position:fixed;top:-15%;left:50%;transform:translateX(-50%);width:80vw;height:520px;z-index:0;pointer-events:none;
+    background:radial-gradient(ellipse at center,rgba(34,211,238,.10),transparent 62%);filter:blur(30px)}
   main,nav,footer{position:relative;z-index:1}
 
   #progress{position:fixed;top:0;left:0;height:2.5px;width:0;background:var(--plot);z-index:100;transition:width .1s linear}
@@ -58,8 +62,8 @@
   .navlinks a{transition:color .18s}
   .navlinks a:hover{color:var(--plot)}
   @media(max-width:860px){.navlinks{display:none}}
-  .nav-cta{font-family:var(--mono);font-size:13px;padding:8px 15px;border:1px solid var(--ink);border-radius:8px;color:var(--ink);transition:.2s;display:inline-flex;gap:7px;align-items:center}
-  .nav-cta:hover{background:var(--ink);color:var(--paper)}
+  .nav-cta{font-family:var(--mono);font-size:13px;padding:8px 15px;border:1px solid var(--line-2);border-radius:8px;color:var(--ink);transition:.2s;display:inline-flex;gap:7px;align-items:center;background:var(--card)}
+  .nav-cta:hover{border-color:var(--plot);color:var(--plot);box-shadow:0 0 16px var(--plot-soft)}
 
   /* hero */
   .hero{padding:70px 0 50px}
@@ -77,8 +81,8 @@
   .cta-row{display:flex;gap:12px;flex-wrap:wrap}
   .btn{font-family:var(--mono);font-size:13.5px;font-weight:500;padding:12px 20px;border-radius:9px;transition:.2s;display:inline-flex;gap:8px;align-items:center;border:1px solid transparent;cursor:pointer}
   .btn svg{width:15px;height:15px}
-  .btn.primary{background:var(--ink);color:var(--paper)}
-  .btn.primary:hover{background:var(--plot);transform:translateY(-2px)}
+  .btn.primary{background:linear-gradient(120deg,var(--plot),var(--plot-4));color:#08131a;font-weight:600}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 26px -8px var(--plot-soft)}
   .btn.ghost{border-color:var(--line-2);background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
   .btn.ghost:hover{border-color:var(--plot);color:var(--plot);transform:translateY(-2px)}
 
@@ -86,9 +90,21 @@
   .figure{position:relative}
   .figure .frame{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);aspect-ratio:896/1010}
   .figure .frame img{width:100%;height:100%;object-fit:cover;object-position:center 16%}
-  .figure .cap{position:absolute;left:-1px;bottom:-1px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;padding:7px 12px;border-radius:0 12px 0 12px;letter-spacing:.02em}
+  .figure .cap{position:absolute;left:-1px;bottom:-1px;background:var(--plot);color:#08131a;font-family:var(--mono);font-size:11px;padding:7px 12px;border-radius:0 12px 0 12px;letter-spacing:.02em}
   .figure .tag{position:absolute;top:12px;right:12px;background:var(--card);border:1px solid var(--line-2);font-family:var(--mono);font-size:10.5px;color:var(--ink-2);padding:5px 10px;border-radius:7px;box-shadow:var(--shadow)}
   @media(max-width:880px){.figure{max-width:330px;margin:0 auto}}
+  /* signature code block */
+  .codesig{margin-top:16px;background:#0d1119;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-family:var(--mono);font-size:12px;box-shadow:var(--shadow)}
+  .codesig .bar{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--paper-2)}
+  .codesig .dots{display:flex;gap:6px}
+  .codesig .dots i{width:9px;height:9px;border-radius:50%;display:block}
+  .codesig .dots i:nth-child(1){background:#f472b6}.codesig .dots i:nth-child(2){background:#fbbf24}.codesig .dots i:nth-child(3){background:#34d399}
+  .codesig .fname{color:var(--ink-3);font-size:11px}
+  .codesig .copy{background:none;border:1px solid var(--line-2);color:var(--ink-2);border-radius:6px;padding:3px 9px;font-family:var(--mono);font-size:10.5px;cursor:pointer;transition:.18s;display:inline-flex;gap:5px;align-items:center}
+  .codesig .copy:hover{border-color:var(--plot);color:var(--plot)}
+  .codesig .copy svg{width:11px;height:11px}
+  .codesig pre{padding:14px 16px;overflow-x:auto;line-height:1.7;color:var(--ink-2)}
+  .codesig .k{color:var(--plot-4)}.codesig .s{color:var(--plot-2)}.codesig .f{color:var(--plot)}.codesig .c{color:var(--ink-3)}.codesig .n{color:var(--plot-3)}
 
   /* section scaffolding */
   section{padding:80px 0}
@@ -142,7 +158,7 @@
   .case:hover{transform:translateY(-2px);border-color:var(--line-2)}
   .case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:12px}
   .case .titlewrap{display:flex;gap:13px;align-items:flex-start}
-  .case .pic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--acc-soft,#fdeceb);flex-shrink:0;margin-top:2px}
+  .case .pic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--acc-soft,rgba(34,211,238,.12));flex-shrink:0;margin-top:2px}
   .case .pic svg{width:20px;height:20px;color:var(--acc,var(--plot))}
   .case h3{font-family:var(--display);font-weight:600;font-size:1.32rem;letter-spacing:-.01em}
   .case .flag{font-family:var(--mono);font-size:10.5px;color:var(--acc,var(--plot));border:1px solid var(--line-2);border-radius:6px;padding:3px 8px;margin-top:6px;display:inline-block}
@@ -240,7 +256,7 @@
 <nav class="top">
   <div class="wrap">
     <a class="brand" href="#top">
-      <svg class="monogram" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="9" fill="#1a1a17"/><path d="M8 10l4.5 11L17 10" stroke="#e9645a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21l3.5-11M22.5 10l3.5 11" stroke="#faf9f6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="monogram" viewBox="0 0 34 34" fill="none"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#818cf8"/></linearGradient></defs><rect width="34" height="34" rx="9" fill="#141924" stroke="#2e3646"/><path d="M8 10l4.5 11L17 10" stroke="url(#mg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21l3.5-11M22.5 10l3.5 11" stroke="#eef2f8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Vyoma Kotak
     </a>
     <div class="navlinks">
@@ -280,6 +296,21 @@
       <div class="tag">fig.01 — V. Kotak</div>
       <div class="frame"><img src="vyoma.jpg" alt="Vyoma Kotak"></div>
       <div class="cap">Data Scientist · ML Engineer</div>
+    </div>
+    <div class="codesig">
+      <div class="bar">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <span class="fname">vyoma.py</span>
+        <button class="copy" id="copysig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>copy</button>
+      </div>
+<pre id="sigcode"><span class="k">from</span> vyoma <span class="k">import</span> DataScientist
+
+me = <span class="f">DataScientist</span>(
+    based=<span class="s">"London, UK"</span>,
+    focus=[<span class="s">"production ML"</span>, <span class="s">"LLMs"</span>],
+    ships=<span class="n">True</span>,   <span class="c"># end to end</span>
+)
+me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
     </div>
   </div>
 </header>
@@ -366,31 +397,6 @@
       </div>
     </div>
 
-    <div class="arch reveal" style="margin-top:28px">
-      <h4>▸ How a model reaches production — my default pipeline</h4>
-      <svg viewBox="0 0 920 150" width="100%" style="min-width:720px" fill="none" font-family="JetBrains Mono, monospace">
-        <!-- connectors -->
-        <g stroke="#d8d3c7" stroke-width="2">
-          <line class="draw" x1="132" y1="55" x2="170" y2="55" pathLength="1"/>
-          <line class="draw" x1="292" y1="55" x2="330" y2="55" pathLength="1"/>
-          <line class="draw" x1="452" y1="55" x2="490" y2="55" pathLength="1"/>
-          <line class="draw" x1="612" y1="55" x2="650" y2="55" pathLength="1"/>
-          <line class="draw" x1="772" y1="55" x2="810" y2="55" pathLength="1"/>
-        </g>
-        <!-- feedback loop -->
-        <path class="draw" d="M855 78 L855 120 L60 120 L60 78" stroke="#e9645a" stroke-width="2" stroke-dasharray="5 5" pathLength="1"/>
-        <text x="457" y="138" fill="#87837a" font-size="11" text-anchor="middle">monitoring &amp; drift feedback → retrain</text>
-        <!-- nodes -->
-        <g>
-          <rect x="12" y="32" width="120" height="46" rx="9" fill="#fdeceb" stroke="#e9645a"/><text x="72" y="60" fill="#1a1a17" font-size="12.5" text-anchor="middle">Ingest</text>
-          <rect x="172" y="32" width="120" height="46" rx="9" fill="#eaf3f2" stroke="#2f6f6b"/><text x="232" y="55" fill="#1a1a17" font-size="12.5" text-anchor="middle">Features</text><text x="232" y="70" fill="#87837a" font-size="9" text-anchor="middle">shared module</text>
-          <rect x="332" y="32" width="120" height="46" rx="9" fill="#eef0fb" stroke="#5566c4"/><text x="392" y="60" fill="#1a1a17" font-size="12.5" text-anchor="middle">Train + tune</text>
-          <rect x="492" y="32" width="120" height="46" rx="9" fill="#fbf3e4" stroke="#e0a13c"/><text x="552" y="55" fill="#1a1a17" font-size="12.5" text-anchor="middle">Evaluate</text><text x="552" y="70" fill="#87837a" font-size="9" text-anchor="middle">honest metrics</text>
-          <rect x="652" y="32" width="120" height="46" rx="9" fill="#f3ecf7" stroke="#8a5aa8"/><text x="712" y="55" fill="#1a1a17" font-size="12.5" text-anchor="middle">Serve</text><text x="712" y="70" fill="#87837a" font-size="9" text-anchor="middle">API · container</text>
-          <rect x="812" y="32" width="96" height="46" rx="9" fill="#fdeceb" stroke="#e9645a"/><text x="860" y="60" fill="#1a1a17" font-size="12.5" text-anchor="middle">Monitor</text>
-        </g>
-      </svg>
-    </div>
   </div>
 </section>
 
@@ -406,7 +412,7 @@
 
     <div class="cases">
 
-      <article class="case" style="--acc:var(--plot);--acc-soft:#fdeceb">
+      <article class="case" style="--acc:var(--plot);--acc-soft:rgba(34,211,238,.12)">
         <div class="case-top">
           <div class="titlewrap">
             <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
@@ -423,7 +429,7 @@
           <div class="case-viz">
             <!-- PR curve mini -->
             <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
-              <line x1="30" y1="10" x2="30" y2="100" stroke="#d8d3c7"/><line x1="30" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
+              <line x1="30" y1="10" x2="30" y2="100" stroke="#2e3646"/><line x1="30" y1="100" x2="180" y2="100" stroke="#2e3646"/>
               <path class="draw" d="M30 14 C120 14 150 16 168 96" stroke="#e9645a" stroke-width="2.5" pathLength="1"/>
               <text x="105" y="116" fill="#87837a" font-size="9" text-anchor="middle">recall →</text>
               <text x="14" y="55" fill="#87837a" font-size="9" text-anchor="middle" transform="rotate(-90 14 55)">precision</text>
@@ -439,7 +445,7 @@
         </div>
       </article>
 
-      <article class="case" style="--acc:var(--plot-2);--acc-soft:#eaf3f2">
+      <article class="case" style="--acc:var(--plot-2);--acc-soft:rgba(52,211,153,.12)">
         <div class="case-top">
           <div class="titlewrap">
             <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.5V4z"/><path d="M8 9h8M8 12h5"/></svg></div>
@@ -456,10 +462,10 @@
           <div class="case-viz">
             <!-- bar chart F1 -->
             <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
-              <line x1="30" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
+              <line x1="30" y1="100" x2="180" y2="100" stroke="#2e3646"/>
               <rect class="grow" x="42" y="46" width="24" height="54" rx="3" fill="#2f6f6b"/>
-              <rect class="grow" x="82" y="60" width="24" height="40" rx="3" fill="#bcd6d3"/>
-              <rect class="grow" x="122" y="66" width="24" height="34" rx="3" fill="#bcd6d3"/>
+              <rect class="grow" x="82" y="60" width="24" height="40" rx="3" fill="#1c3b37"/>
+              <rect class="grow" x="122" y="66" width="24" height="34" rx="3" fill="#1c3b37"/>
               <text x="54" y="40" fill="#2f6f6b" font-size="10" text-anchor="middle">.851</text>
               <text x="54" y="114" fill="#87837a" font-size="8" text-anchor="middle">LogReg</text>
               <text x="94" y="114" fill="#87837a" font-size="8" text-anchor="middle">RF</text>
@@ -476,7 +482,7 @@
         </div>
       </article>
 
-      <article class="case" style="--acc:var(--plot-4);--acc-soft:#eef0fb">
+      <article class="case" style="--acc:var(--plot-4);--acc-soft:rgba(129,140,248,.14)">
         <div class="case-top">
           <div class="titlewrap">
             <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="4" height="6"/><rect x="14" y="7" width="4" height="11"/></svg></div>
@@ -493,8 +499,8 @@
           <div class="case-viz">
             <!-- two distributions -->
             <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
-              <line x1="20" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
-              <path class="draw" d="M20 100 C60 100 55 40 85 40 C110 40 105 100 150 100" stroke="#c9cdd6" stroke-width="2" pathLength="1"/>
+              <line x1="20" y1="100" x2="180" y2="100" stroke="#2e3646"/>
+              <path class="draw" d="M20 100 C60 100 55 40 85 40 C110 40 105 100 150 100" stroke="#3a4256" stroke-width="2" pathLength="1"/>
               <path class="draw" d="M50 100 C95 100 90 24 120 24 C150 24 145 100 185 100" stroke="#5566c4" stroke-width="2.5" pathLength="1"/>
               <text x="70" y="52" fill="#87837a" font-size="9">A</text>
               <text x="128" y="36" fill="#5566c4" font-size="9">B +59%</text>
@@ -508,7 +514,7 @@
         </div>
       </article>
 
-      <article class="case" style="--acc:var(--plot-5);--acc-soft:#f3ecf7">
+      <article class="case" style="--acc:var(--plot-5);--acc-soft:rgba(244,114,182,.13)">
         <div class="case-top">
           <div class="titlewrap">
             <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M4 12H2M22 12h-2M12 4V2M12 22v-2"/></svg></div>
@@ -524,9 +530,9 @@
           </div>
           <div class="case-viz">
             <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
-              <line x1="30" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
-              <rect class="grow" x="44" y="70" width="22" height="30" rx="3" fill="#d5c2e0"/>
-              <rect class="grow" x="82" y="52" width="22" height="48" rx="3" fill="#b891cc"/>
+              <line x1="30" y1="100" x2="180" y2="100" stroke="#2e3646"/>
+              <rect class="grow" x="44" y="70" width="22" height="30" rx="3" fill="#4a2f57"/>
+              <rect class="grow" x="82" y="52" width="22" height="48" rx="3" fill="#8a5aa8"/>
               <rect class="grow" x="120" y="34" width="22" height="66" rx="3" fill="#8a5aa8"/>
               <text x="55" y="112" fill="#87837a" font-size="7.5" text-anchor="middle">zero</text>
               <text x="93" y="112" fill="#87837a" font-size="7.5" text-anchor="middle">few</text>
@@ -541,7 +547,7 @@
         </div>
       </article>
 
-      <article class="case" style="--acc:var(--plot-3);--acc-soft:#fbf3e4">
+      <article class="case" style="--acc:var(--plot-3);--acc-soft:rgba(251,191,36,.13)">
         <div class="case-top">
           <div class="titlewrap">
             <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M19 9l-5 5-3-3-4 4"/></svg></div>
@@ -557,7 +563,7 @@
           </div>
           <div class="case-viz">
             <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
-              <line x1="30" y1="10" x2="30" y2="100" stroke="#d8d3c7"/><line x1="30" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
+              <line x1="30" y1="10" x2="30" y2="100" stroke="#2e3646"/><line x1="30" y1="100" x2="180" y2="100" stroke="#2e3646"/>
               <circle cx="55" cy="82" r="3" fill="#e0a13c"/><circle cx="75" cy="70" r="3" fill="#e0a13c"/><circle cx="95" cy="60" r="3" fill="#e0a13c"/><circle cx="115" cy="48" r="3" fill="#e0a13c"/><circle cx="135" cy="40" r="3" fill="#e0a13c"/><circle cx="158" cy="28" r="3" fill="#e0a13c"/>
               <path class="draw" d="M50 84 L162 26" stroke="#e0a13c" stroke-width="2" stroke-dasharray="4 3" pathLength="1"/>
               <text x="105" y="20" fill="#e0a13c" font-size="9" text-anchor="middle">predicted vs actual</text>
@@ -571,7 +577,7 @@
         </div>
       </article>
 
-      <article class="case" style="--acc:var(--plot);--acc-soft:#fdeceb">
+      <article class="case" style="--acc:var(--plot);--acc-soft:rgba(34,211,238,.12)">
         <div class="case-top">
           <div class="titlewrap">
             <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
@@ -587,10 +593,10 @@
           </div>
           <div class="case-viz">
             <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
-              <circle cx="95" cy="60" r="42" fill="none" stroke="#f6e4e1" stroke-width="16"/>
-              <circle cx="95" cy="60" r="42" fill="none" stroke="#f6d3cf" stroke-width="16" stroke-dasharray="132 264" transform="rotate(-90 95 60)"/>
+              <circle cx="95" cy="60" r="42" fill="none" stroke="#20283a" stroke-width="16"/>
+              <circle cx="95" cy="60" r="42" fill="none" stroke="#123c44" stroke-width="16" stroke-dasharray="132 264" transform="rotate(-90 95 60)"/>
               <circle class="draw" cx="95" cy="60" r="42" fill="none" stroke="#e9645a" stroke-width="16" stroke-dasharray="90 264" stroke-dashoffset="0" transform="rotate(42 95 60)" pathLength="1"/>
-              <text x="95" y="64" fill="#1a1a17" font-size="11" text-anchor="middle" font-weight="600">3 classes</text>
+              <text x="95" y="64" fill="#eef2f8" font-size="11" text-anchor="middle" font-weight="600">3 classes</text>
             </svg>
           </div>
         </div>
@@ -601,7 +607,7 @@
         </div>
       </article>
 
-      <article class="case" style="--acc:var(--plot-4);--acc-soft:#eef0fb">
+      <article class="case" style="--acc:var(--plot-4);--acc-soft:rgba(129,140,248,.14)">
         <div class="case-top">
           <div class="titlewrap">
             <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/></svg></div>
@@ -617,11 +623,11 @@
           </div>
           <div class="case-viz">
             <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
-              <line x1="60" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
+              <line x1="60" y1="100" x2="180" y2="100" stroke="#2e3646"/>
               <rect class="grow" x="70" y="30" width="18" height="70" rx="2" fill="#5566c4"/>
-              <rect class="grow" x="96" y="52" width="18" height="48" rx="2" fill="#8b98d8"/>
-              <rect class="grow" x="122" y="66" width="18" height="34" rx="2" fill="#b3bce6"/>
-              <rect class="grow" x="148" y="80" width="18" height="20" rx="2" fill="#ccd2ee"/>
+              <rect class="grow" x="96" y="52" width="18" height="48" rx="2" fill="#5566c4"/>
+              <rect class="grow" x="122" y="66" width="18" height="34" rx="2" fill="#3a447a"/>
+              <rect class="grow" x="148" y="80" width="18" height="20" rx="2" fill="#2c3566"/>
               <text x="118" y="20" fill="#5566c4" font-size="9" text-anchor="middle">feature importance</text>
             </svg>
           </div>
@@ -788,6 +794,13 @@
   };
   const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){runCount(e.target);cio.unobserve(e.target)}})},{threshold:.6});
   document.querySelectorAll('.mcard .n[data-target]').forEach(el=>cio.observe(el));
+
+  // copy signature
+  const cb=document.getElementById('copysig');
+  if(cb){cb.addEventListener('click',()=>{
+    const t=document.getElementById('sigcode').innerText;
+    navigator.clipboard.writeText(t).then(()=>{const o=cb.innerHTML;cb.innerHTML='✓ copied';setTimeout(()=>cb.innerHTML=o,1600);});
+  });}
 </script>
 </body>
 </html>
