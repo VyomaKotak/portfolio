@@ -33,7 +33,7 @@
     --display:'Fraunces',Georgia,serif;
     --body:'Inter',system-ui,sans-serif;
     --mono:'JetBrains Mono',ui-monospace,monospace;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -24px rgba(0,0,0,.7);
+    --shadow:0 2px 4px rgba(0,0,0,.2),0 24px 48px -20px rgba(0,0,0,.55);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -51,18 +51,16 @@
     background:radial-gradient(ellipse at center,rgba(34,211,238,.10),transparent 62%);filter:blur(30px)}
   main,nav,footer{position:relative;z-index:1}
 
-  #progress{position:fixed;top:0;left:0;height:2.5px;width:0;background:var(--plot);z-index:100;transition:width .1s linear}
-
   /* nav */
-  nav.top{position:sticky;top:0;z-index:60;background:rgba(250,249,246,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;font-size:1.08rem}
+  nav.top{position:sticky;top:14px;z-index:60;margin:14px auto 0;max-width:1120px;background:rgba(20,25,36,.82);backdrop-filter:blur(14px);border:1px solid var(--line-2);border-radius:999px;box-shadow:0 4px 24px rgba(0,0,0,.35)}
+  nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 30px}
+  .brand{font-family:var(--display);font-weight:600;font-size:1.12rem;letter-spacing:-.01em}
   .monogram{width:34px;height:34px}
   .navlinks{display:flex;gap:24px;font-size:13.5px;font-weight:450;color:var(--ink-2);font-family:var(--mono)}
   .navlinks a{transition:color .18s}
   .navlinks a:hover{color:var(--plot)}
   @media(max-width:860px){.navlinks{display:none}}
-  .nav-cta{font-family:var(--mono);font-size:13px;padding:8px 15px;border:1px solid var(--line-2);border-radius:8px;color:var(--ink);transition:.2s;display:inline-flex;gap:7px;align-items:center;background:var(--card)}
+  .nav-cta{font-family:var(--mono);font-size:13px;padding:8px 18px;border:1px solid var(--line-2);border-radius:999px;color:var(--ink);transition:.2s;display:inline-flex;gap:7px;align-items:center;background:var(--card)}
   .nav-cta:hover{border-color:var(--plot);color:var(--plot);box-shadow:0 0 16px var(--plot-soft)}
 
   /* hero */
@@ -79,7 +77,7 @@
   .hero .sub{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);margin-bottom:30px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
   .hero .sub svg{width:14px;height:14px;opacity:.7}
   .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-  .btn{font-family:var(--mono);font-size:13.5px;font-weight:500;padding:12px 20px;border-radius:9px;transition:.2s;display:inline-flex;gap:8px;align-items:center;border:1px solid transparent;cursor:pointer}
+  .btn{font-family:var(--mono);font-size:13.5px;font-weight:500;padding:12px 22px;border-radius:20px;transition:.2s;display:inline-flex;gap:8px;align-items:center;border:1px solid transparent;cursor:pointer}
   .btn svg{width:15px;height:15px}
   .btn.primary{background:linear-gradient(120deg,var(--plot),var(--plot-4));color:#08131a;font-weight:600}
   .btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 26px -8px var(--plot-soft)}
@@ -88,28 +86,42 @@
 
   /* hero photo as a "figure" */
   .figure{position:relative}
-  .figure .frame{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);aspect-ratio:896/1010}
+  .figure .frame{border:1px solid var(--line-2);border-radius:40px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);aspect-ratio:896/1010}
   .figure .frame img{width:100%;height:100%;object-fit:cover;object-position:center 16%}
   .figure .cap{position:absolute;left:-1px;bottom:-1px;background:var(--plot);color:#08131a;font-family:var(--mono);font-size:11px;padding:7px 12px;border-radius:0 12px 0 12px;letter-spacing:.02em}
   .figure .tag{position:absolute;top:12px;right:12px;background:var(--card);border:1px solid var(--line-2);font-family:var(--mono);font-size:10.5px;color:var(--ink-2);padding:5px 10px;border-radius:7px;box-shadow:var(--shadow)}
   @media(max-width:880px){.figure{max-width:330px;margin:0 auto}}
-  /* signature code block */
-  .codesig{margin-top:16px;background:#0d1119;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-family:var(--mono);font-size:12px;box-shadow:var(--shadow)}
-  .codesig .bar{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--paper-2)}
-  .codesig .dots{display:flex;gap:6px}
-  .codesig .dots i{width:9px;height:9px;border-radius:50%;display:block}
-  .codesig .dots i:nth-child(1){background:#f472b6}.codesig .dots i:nth-child(2){background:#fbbf24}.codesig .dots i:nth-child(3){background:#34d399}
-  .codesig .fname{color:var(--ink-3);font-size:11px}
-  .codesig .copy{background:none;border:1px solid var(--line-2);color:var(--ink-2);border-radius:6px;padding:3px 9px;font-family:var(--mono);font-size:10.5px;cursor:pointer;transition:.18s;display:inline-flex;gap:5px;align-items:center}
-  .codesig .copy:hover{border-color:var(--plot);color:var(--plot)}
-  .codesig .copy svg{width:11px;height:11px}
-  .codesig pre{padding:14px 16px;overflow-x:auto;line-height:1.7;color:var(--ink-2)}
-  .codesig .k{color:var(--plot-4)}.codesig .s{color:var(--plot-2)}.codesig .f{color:var(--plot)}.codesig .c{color:var(--ink-3)}.codesig .n{color:var(--plot-3)}
+
+  /* rotating tech ticker */
+  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);overflow:hidden;padding:15px 0;position:relative}
+  .ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+  .ticker::before{left:0;background:linear-gradient(90deg,var(--paper-2),transparent)}
+  .ticker::after{right:0;background:linear-gradient(270deg,var(--paper-2),transparent)}
+  .ticker-track{display:flex;gap:40px;white-space:nowrap;font-family:var(--mono);font-size:13px;color:var(--ink-3);width:max-content;animation:scroll 34s linear infinite}
+  .ticker-track span{display:inline-flex;gap:9px;align-items:center}
+  .ticker-track b{color:var(--plot);font-weight:400}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* flip cards */
+  .techcard{background:transparent;border:0;box-shadow:none;perspective:1200px;height:172px;padding:0}
+  .techcard:hover{transform:none}
+  .flip{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;cursor:pointer}
+  .techcard:hover .flip,.techcard:focus-within .flip,.flip.flipped{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden}
+  .face.back{transform:rotateY(180deg);background:linear-gradient(160deg,var(--card-2),var(--card));border-color:var(--acc,var(--plot))}
+  .face .cat{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--acc,var(--plot));margin-bottom:12px;display:flex;align-items:center;gap:9px}
+  .face .cat svg{width:16px;height:16px}
+  .face .items{display:flex;flex-wrap:wrap;gap:6px}
+  .face .items span{font-size:11.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+  .face.back p{font-size:13.5px;color:var(--ink-2);line-height:1.5;margin-top:2px}
+  .face .fliphint{margin-top:auto;font-family:var(--mono);font-size:10px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+  .face .fliphint svg{width:12px;height:12px}
 
   /* section scaffolding */
-  section{padding:80px 0}
-  .chapter{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--plot);margin-bottom:14px;display:flex;align-items:center;gap:10px}
-  .chapter svg{width:15px;height:15px}
+  section{padding:100px 0}
+  .chapter{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--plot);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+  .chapter::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--plot);box-shadow:0 0 8px var(--plot);flex-shrink:0}
+  .chapter svg{width:14px;height:14px}
   .sec-title{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-.02em;margin-bottom:16px;line-height:1.1}
   .sec-title em{font-style:italic;color:var(--plot)}
   .sec-intro{color:var(--ink-2);max-width:62ch;margin-bottom:44px}
@@ -122,7 +134,7 @@
   .story p strong{color:var(--ink);font-weight:600}
   .story .pull{font-family:var(--display);font-size:1.5rem;line-height:1.36;color:var(--ink);font-weight:500;margin-bottom:22px;letter-spacing:-.01em}
   .story .pull em{font-style:italic;color:var(--plot)}
-  .spec{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px;height:fit-content;box-shadow:var(--shadow)}
+  .spec{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:22px;height:fit-content;box-shadow:var(--shadow)}
   .spec .row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
   .spec .row:last-child{border-bottom:0;padding-bottom:0}.spec .row:first-child{padding-top:0}
   .spec .k{font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3);display:flex;gap:7px;align-items:center}
@@ -132,7 +144,7 @@
   /* metrics with sparkline vibe */
   .metrics-band{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   @media(max-width:680px){.metrics-band{grid-template-columns:repeat(2,1fr)}}
-  .mcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .mcard{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
   .mcard .n{font-family:var(--display);font-weight:700;font-size:2.2rem;line-height:1;letter-spacing:-.02em}
   .mcard .n .u{font-size:1rem;color:var(--acc,var(--plot))}
   .mcard .c{font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-3);margin-top:8px}
@@ -141,7 +153,7 @@
   /* principles */
   .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   @media(max-width:840px){.principles{grid-template-columns:1fr}}
-  .principle{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:26px;box-shadow:var(--shadow);transition:.22s}
+  .principle{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:var(--shadow);transition:.22s}
   .principle:hover{transform:translateY(-3px);border-color:var(--line-2)}
   .principle .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;margin-bottom:15px;background:var(--paper-2);border:1px solid var(--line)}
   .principle .ic svg{width:21px;height:21px;color:var(--acc,var(--plot))}
@@ -154,19 +166,19 @@
 
   /* cases */
   .cases{display:flex;flex-direction:column;gap:22px}
-  .case{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:30px 32px;box-shadow:var(--shadow);transition:.22s;position:relative}
-  .case:hover{transform:translateY(-2px);border-color:var(--line-2)}
+  .case{background:var(--card);border:1px solid var(--line);border-radius:36px;padding:30px 32px;box-shadow:var(--shadow);transition:.22s;position:relative}
+  .case:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 2px 4px rgba(0,0,0,.2),0 40px 70px -30px rgba(0,0,0,.6)}
   .case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:12px}
   .case .titlewrap{display:flex;gap:13px;align-items:flex-start}
   .case .pic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--acc-soft,rgba(34,211,238,.12));flex-shrink:0;margin-top:2px}
   .case .pic svg{width:20px;height:20px;color:var(--acc,var(--plot))}
   .case h3{font-family:var(--display);font-weight:600;font-size:1.32rem;letter-spacing:-.01em}
-  .case .flag{font-family:var(--mono);font-size:10.5px;color:var(--acc,var(--plot));border:1px solid var(--line-2);border-radius:6px;padding:3px 8px;margin-top:6px;display:inline-block}
-  .case .gh{font-family:var(--mono);font-size:12px;color:var(--ink-2);border:1px solid var(--line-2);border-radius:8px;padding:8px 13px;transition:.2s;white-space:nowrap;display:inline-flex;gap:6px;align-items:center}
+  .case .flag{font-family:var(--mono);font-size:10.5px;color:var(--acc,var(--plot));border:1px solid var(--line-2);border-radius:999px;padding:3px 11px;margin-top:6px;display:inline-block}
+  .case .gh{font-family:var(--mono);font-size:12px;color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:8px 15px;transition:.2s;white-space:nowrap;display:inline-flex;gap:6px;align-items:center}
   .case .gh svg{width:14px;height:14px}
   .case .gh:hover{border-color:var(--acc,var(--plot));color:var(--acc,var(--plot))}
   .stack{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 18px}
-  .chip{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:4px 10px}
+  .chip{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
   .case-body{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}
   @media(max-width:720px){.case-body{grid-template-columns:1fr;gap:18px}}
   .pv{display:grid;grid-template-columns:auto 1fr;gap:8px 15px}
@@ -184,12 +196,12 @@
   .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   @media(max-width:840px){.tech-grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:520px){.tech-grid{grid-template-columns:1fr}}
-  .techcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);transition:.22s}
+  .techcard{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:var(--shadow);transition:.22s}
   .techcard:hover{transform:translateY(-3px);border-color:var(--acc,var(--plot))}
   .techcard .cat{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--acc,var(--plot));margin-bottom:14px;display:flex;align-items:center;gap:9px}
   .techcard .cat svg{width:16px;height:16px}
   .techcard .items{display:flex;flex-wrap:wrap;gap:7px}
-  .techcard .items span{font-size:12.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:7px;padding:5px 10px;transition:.16s}
+  .techcard .items span{font-size:12.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;transition:.16s}
   .techcard .items span:hover{border-color:var(--acc,var(--plot));color:var(--ink);transform:translateY(-1px)}
 
   /* timeline */
@@ -208,7 +220,7 @@
   .tl li::before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--plot-2)}
 
   /* why hire */
-  .why{background:var(--card);border:1px solid var(--line-2);border-radius:20px;padding:42px;box-shadow:var(--shadow)}
+  .why{background:var(--card);border:1px solid var(--line-2);border-radius:40px;padding:42px;box-shadow:var(--shadow)}
   @media(max-width:600px){.why{padding:28px 22px}}
   .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:10px}
   @media(max-width:680px){.why-grid{grid-template-columns:1fr}}
@@ -223,7 +235,7 @@
   @media(max-width:720px){.two{grid-template-columns:1fr;gap:32px}}
   .mini-h{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--plot-3);margin-bottom:18px;display:flex;gap:8px;align-items:center}
   .mini-h svg{width:15px;height:15px}
-  .edu-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:19px;margin-bottom:13px;box-shadow:var(--shadow)}
+  .edu-item{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:19px;margin-bottom:13px;box-shadow:var(--shadow)}
   .edu-item .d{font-family:var(--display);font-weight:600;font-size:1.05rem}
   .edu-item .s{color:var(--ink-3);font-size:13px;margin-top:2px;font-family:var(--mono)}
   .cert-list{list-style:none}
@@ -251,14 +263,10 @@
 </head>
 <body>
 
-<div id="progress"></div>
 
 <nav class="top">
   <div class="wrap">
-    <a class="brand" href="#top">
-      <svg class="monogram" viewBox="0 0 34 34" fill="none"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#818cf8"/></linearGradient></defs><rect width="34" height="34" rx="9" fill="#141924" stroke="#2e3646"/><path d="M8 10l4.5 11L17 10" stroke="url(#mg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21l3.5-11M22.5 10l3.5 11" stroke="#eef2f8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Vyoma Kotak
-    </a>
+    <a class="brand" href="#top">Vyoma Kotak</a>
     <div class="navlinks">
       <a href="#who">Who</a>
       <a href="#think">Approach</a>
@@ -275,8 +283,8 @@
   <div class="wrap hero-grid">
     <div>
       <div class="pill"><span class="d"></span> Open to Data Science, ML & AI Engineer roles · UK</div>
-      <h1>I make data <em>behave</em> under load.</h1>
-      <p class="lede">Give me forty million messy rows and a business question, and I'll hand back a model that answers it, then keep answering it in production. I work the <strong>whole path</strong>: ingestion, modelling, serving, and the monitoring that keeps it honest.</p>
+      <h1>The model is the easy part. <em>Everything around it</em> is the work.</h1>
+      <p class="lede">Anyone can fit a classifier. The engineering that matters lives in the pipeline feeding it and the system serving it, at forty-million-row scale, under load, without quietly breaking. That gap is where I work.</p>
       <p class="sub">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         London · MSc Data Science, Coventry · Ex-Systems Engineer, TCS
@@ -297,30 +305,21 @@
       <div class="frame"><img src="vyoma.jpg" alt="Vyoma Kotak"></div>
       <div class="cap">Data Scientist · ML Engineer</div>
     </div>
-    <div class="codesig">
-      <div class="bar">
-        <div class="dots"><i></i><i></i><i></i></div>
-        <span class="fname">vyoma.py</span>
-        <button class="copy" id="copysig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>copy</button>
-      </div>
-<pre id="sigcode"><span class="k">from</span> vyoma <span class="k">import</span> DataScientist
-
-me = <span class="f">DataScientist</span>(
-    based=<span class="s">"London, UK"</span>,
-    focus=[<span class="s">"production ML"</span>, <span class="s">"LLMs"</span>],
-    ships=<span class="n">True</span>,   <span class="c"># end to end</span>
-)
-me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
-    </div>
+    
   </div>
 </header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><b>▹</b> Python</span><span><b>▹</b> PySpark</span><span><b>▹</b> Kafka</span><span><b>▹</b> Spark Structured Streaming</span><span><b>▹</b> FastAPI</span><span><b>▹</b> Docker</span><span><b>▹</b> scikit-learn</span><span><b>▹</b> XGBoost</span><span><b>▹</b> PyTorch</span><span><b>▹</b> SHAP</span><span><b>▹</b> LLMs</span><span><b>▹</b> RAG</span><span><b>▹</b> Agentic AI</span><span><b>▹</b> AWS</span><span><b>▹</b> Tableau</span><span><b>▹</b> A/B Testing</span>
+    <span><b>▹</b> Python</span><span><b>▹</b> PySpark</span><span><b>▹</b> Kafka</span><span><b>▹</b> Spark Structured Streaming</span><span><b>▹</b> FastAPI</span><span><b>▹</b> Docker</span><span><b>▹</b> scikit-learn</span><span><b>▹</b> XGBoost</span><span><b>▹</b> PyTorch</span><span><b>▹</b> SHAP</span><span><b>▹</b> LLMs</span><span><b>▹</b> RAG</span><span><b>▹</b> Agentic AI</span><span><b>▹</b> AWS</span><span><b>▹</b> Tableau</span><span><b>▹</b> A/B Testing</span>
+  </div>
+</div>
 
 <!-- WHO -->
 <section id="who">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg>
-      Chapter 01 — The short version
+    <div class="chapter">Chapter 01 — The short version
     </div>
     <div class="story-grid story">
       <div>
@@ -343,9 +342,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- PROBLEM + metrics -->
 <section id="problem" class="alt">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
-      Chapter 02 — The thing I keep chasing
+    <div class="chapter">Chapter 02 — The thing I keep chasing
     </div>
     <h2 class="sec-title">Signal, pulled out of <em>noise</em>, at a scale that matters.</h2>
     <p class="sec-intro">Almost every problem I enjoy reduces to one shape: a large, messy, real-world dataset that clearly contains an answer, and the engineering work needed to get that answer out reliably and fast enough to act on. Here is that instinct, in numbers.</p>
@@ -373,9 +370,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- APPROACH + architecture diagram -->
 <section id="think">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/><path d="M9 21h6M10 17v4M14 17v4"/></svg>
-      Chapter 03 — How I actually work
+    <div class="chapter">Chapter 03 — How I actually work
     </div>
     <h2 class="sec-title">Three convictions, earned the hard way.</h2>
     <p class="sec-intro">Four years on call for systems that couldn't go down left me with a few opinions about how machine learning should be built.</p>
@@ -403,9 +398,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- WORK -->
 <section id="work" class="alt">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
-      Chapter 04 — Selected work
+    <div class="chapter">Chapter 04 — Selected work
     </div>
     <h2 class="sec-title">Seven builds, each solving a <em>real</em> problem.</h2>
     <p class="sec-intro">Not tutorials rerun with new data. Each of these started from a question a business would actually ask, and ends with something measurable.</p>
@@ -428,12 +421,22 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
           </div>
           <div class="case-viz">
             <!-- PR curve mini -->
-            <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
-              <line x1="30" y1="10" x2="30" y2="100" stroke="#2e3646"/><line x1="30" y1="100" x2="180" y2="100" stroke="#2e3646"/>
-              <path class="draw" d="M30 14 C120 14 150 16 168 96" stroke="#e9645a" stroke-width="2.5" pathLength="1"/>
-              <text x="105" y="116" fill="#87837a" font-size="9" text-anchor="middle">recall →</text>
-              <text x="14" y="55" fill="#87837a" font-size="9" text-anchor="middle" transform="rotate(-90 14 55)">precision</text>
-              <text x="120" y="30" fill="#e9645a" font-size="10">PR-AUC 0.998</text>
+            <svg viewBox="0 0 200 130" width="100%" fill="none" font-family="JetBrains Mono,monospace">
+              <defs><linearGradient id="prfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22d3ee" stop-opacity=".18"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></linearGradient></defs>
+              <!-- faint gridlines -->
+              <g stroke="#1c2331" stroke-width="1">
+                <line x1="34" y1="30" x2="184" y2="30"/><line x1="34" y1="60" x2="184" y2="60"/><line x1="34" y1="90" x2="184" y2="90"/>
+              </g>
+              <!-- axes -->
+              <line x1="34" y1="14" x2="34" y2="104" stroke="#2e3646" stroke-width="1.5"/><line x1="34" y1="104" x2="184" y2="104" stroke="#2e3646" stroke-width="1.5"/>
+              <!-- area under curve -->
+              <path d="M34 20 C104 21 140 26 168 55 C176 66 180 82 182 104 L34 104 Z" fill="url(#prfill)"/>
+              <!-- the curve: high precision held flat, clean knee, smooth drop -->
+              <path class="draw" d="M34 20 C104 21 140 26 168 55 C176 66 180 82 182 104" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round" pathLength="1"/>
+              <!-- label, clear of the curve, top-left area -->
+              <text x="44" y="18" fill="#22d3ee" font-size="10.5" font-weight="500">PR-AUC 0.998</text>
+              <text x="109" y="120" fill="#5f6980" font-size="9" text-anchor="middle">recall →</text>
+              <text x="16" y="59" fill="#5f6980" font-size="9" text-anchor="middle" transform="rotate(-90 16 59)">precision</text>
             </svg>
           </div>
         </div>
@@ -646,19 +649,54 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- TOOLKIT -->
 <section id="tech">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.5-.5-.5-2.5z"/></svg>
-      Chapter 05 — The toolkit
+    <div class="chapter">Chapter 05 — The toolkit
     </div>
     <h2 class="sec-title">What I reach for.</h2>
-    <p class="sec-intro">Engineering discipline from four years of building systems, applied to data science and AI.</p>
+    <p class="sec-intro">Engineering discipline from four years of building systems, applied to data science and AI. Hover or tap a card to see how I actually use each group.</p>
     <div class="tech-grid">
-      <div class="techcard" style="--acc:var(--plot)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Programming languages</div><div class="items"><span>Python</span><span>SQL</span><span>Java</span><span>Bash</span></div></div>
-      <div class="techcard" style="--acc:var(--plot-2)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 12h16M12 4v16"/></svg>Libraries & frameworks</div><div class="items"><span>pandas</span><span>NumPy</span><span>scikit-learn</span><span>XGBoost</span><span>PyTorch</span><span>TensorFlow</span></div></div>
-      <div class="techcard" style="--acc:var(--plot-4)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg>Machine learning & AI</div><div class="items"><span>NLP</span><span>SHAP</span><span>Feature engineering</span><span>A/B testing</span><span>LLMs</span><span>RAG</span><span>Agentic AI</span></div></div>
-      <div class="techcard" style="--acc:var(--plot-5)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>Big data & streaming</div><div class="items"><span>Apache Spark</span><span>Spark Structured Streaming</span><span>PySpark</span><span>Kafka</span><span>Airflow</span></div></div>
-      <div class="techcard" style="--acc:var(--plot-3)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.3A7 7 0 1 0 4 15.8"/><path d="M8 16a5 5 0 1 1 10 0 4 4 0 0 1-1 8H9a4 4 0 0 1-1-8z"/></svg>Cloud & deployment</div><div class="items"><span>AWS (S3, EC2, SageMaker)</span><span>GCP (BigQuery)</span><span>Docker</span><span>FastAPI</span><span>CI/CD</span><span>Git</span></div></div>
-      <div class="techcard" style="--acc:var(--plot-2)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8"/><rect x="13" y="6" width="3" height="12"/></svg>Analytics & visualisation</div><div class="items"><span>Power BI</span><span>Tableau</span><span>Advanced Excel</span><span>Oracle</span><span>MySQL</span></div></div>
+
+      <div class="techcard" style="--acc:var(--plot)" tabindex="0">
+        <div class="flip">
+          <div class="face front"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Programming languages</div><div class="items"><span>Python</span><span>SQL</span><span>Java</span><span>Bash</span></div><div class="fliphint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>hover to flip</div></div>
+          <div class="face back"><div class="cat">In practice</div><p>Python is my daily driver for modelling and pipelines; SQL for pulling and shaping data at source. Bash glues the automation together.</p></div>
+        </div>
+      </div>
+
+      <div class="techcard" style="--acc:var(--plot-2)" tabindex="0">
+        <div class="flip">
+          <div class="face front"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 12h16M12 4v16"/></svg>Libraries & frameworks</div><div class="items"><span>pandas</span><span>NumPy</span><span>scikit-learn</span><span>XGBoost</span><span>PyTorch</span><span>TensorFlow</span></div><div class="fliphint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>hover to flip</div></div>
+          <div class="face back"><div class="cat">In practice</div><p>scikit-learn and XGBoost for most tabular work; PyTorch when a problem genuinely needs deep learning. pandas and NumPy for everything in between.</p></div>
+        </div>
+      </div>
+
+      <div class="techcard" style="--acc:var(--plot-4)" tabindex="0">
+        <div class="flip">
+          <div class="face front"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg>Machine learning & AI</div><div class="items"><span>NLP</span><span>SHAP</span><span>Feature engineering</span><span>A/B testing</span><span>LLMs</span><span>RAG</span><span>Agentic AI</span></div><div class="fliphint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>hover to flip</div></div>
+          <div class="face back"><div class="cat">In practice</div><p>Feature engineering and SHAP make models explainable; A/B testing keeps claims honest. Lately, building agentic and RAG workflows on top of LLMs.</p></div>
+        </div>
+      </div>
+
+      <div class="techcard" style="--acc:var(--plot-5)" tabindex="0">
+        <div class="flip">
+          <div class="face front"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>Big data & streaming</div><div class="items"><span>Apache Spark</span><span>Spark Structured Streaming</span><span>PySpark</span><span>Kafka</span><span>Airflow</span></div><div class="fliphint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>hover to flip</div></div>
+          <div class="face back"><div class="cat">In practice</div><p>PySpark when data outgrows memory — I've run pipelines over 40M+ rows. Kafka and Structured Streaming for the real-time scoring in my fraud platform.</p></div>
+        </div>
+      </div>
+
+      <div class="techcard" style="--acc:var(--plot-3)" tabindex="0">
+        <div class="flip">
+          <div class="face front"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.3A7 7 0 1 0 4 15.8"/><path d="M8 16a5 5 0 1 1 10 0 4 4 0 0 1-1 8H9a4 4 0 0 1-1-8z"/></svg>Cloud & deployment</div><div class="items"><span>AWS (S3, EC2, SageMaker)</span><span>GCP (BigQuery)</span><span>Docker</span><span>FastAPI</span><span>CI/CD</span><span>Git</span></div><div class="fliphint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>hover to flip</div></div>
+          <div class="face back"><div class="cat">In practice</div><p>Models become FastAPI services in Docker containers, not notebooks. CI keeps them tested; this is the muscle my four years in production built.</p></div>
+        </div>
+      </div>
+
+      <div class="techcard" style="--acc:var(--plot-2)" tabindex="0">
+        <div class="flip">
+          <div class="face front"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8"/><rect x="13" y="6" width="3" height="12"/></svg>Analytics & visualisation</div><div class="items"><span>Power BI</span><span>Tableau</span><span>Advanced Excel</span><span>Oracle</span><span>MySQL</span></div><div class="fliphint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>hover to flip</div></div>
+          <div class="face back"><div class="cat">In practice</div><p>Tableau and Power BI to turn model output into something a stakeholder reads without me in the room. SQL over Oracle and MySQL underneath it all.</p></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -666,9 +704,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- JOURNEY -->
 <section id="journey" class="alt">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9l7-7 7 7"/></svg>
-      Chapter 06 — How I got here
+    <div class="chapter">Chapter 06 — How I got here
     </div>
     <h2 class="sec-title">Systems first. Then the data on top.</h2>
     <div class="tl" style="margin-top:36px">
@@ -706,9 +742,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- WHY HIRE -->
 <section id="hire">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9"/></svg>
-      Chapter 07 — Why bring me in
+    <div class="chapter">Chapter 07 — Why bring me in
     </div>
     <div class="why">
       <h2 class="sec-title" style="margin-bottom:10px">What you're actually hiring.</h2>
@@ -748,9 +782,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- CONTACT -->
 <section id="contact" class="contact alt">
   <div class="wrap reveal">
-    <div class="chapter" style="justify-content:center">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
-      Chapter 08 — Say hello
+    <div class="chapter" style="justify-content:center">Chapter 08 — Say hello
     </div>
     <h2>Got a hard data problem? <em>Let's talk.</em></h2>
     <p>I'm open to Graduate, Junior and Associate Data Science, ML, AI and Data Engineering roles across the UK. If your team cares about data that drives real decisions, I'd love to hear from you.</p>
@@ -772,9 +804,6 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 </footer>
 
 <script>
-  const bar=document.getElementById('progress');
-  const onScroll=()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';};
-  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
     e.target.classList.add('in');
@@ -795,12 +824,12 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
   const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){runCount(e.target);cio.unobserve(e.target)}})},{threshold:.6});
   document.querySelectorAll('.mcard .n[data-target]').forEach(el=>cio.observe(el));
 
-  // copy signature
-  const cb=document.getElementById('copysig');
-  if(cb){cb.addEventListener('click',()=>{
-    const t=document.getElementById('sigcode').innerText;
-    navigator.clipboard.writeText(t).then(()=>{const o=cb.innerHTML;cb.innerHTML='✓ copied';setTimeout(()=>cb.innerHTML=o,1600);});
-  });}
+  // flip cards: tap to flip on touch, keyboard toggle
+  document.querySelectorAll('.techcard').forEach(card=>{
+    const flip=card.querySelector('.flip');
+    card.addEventListener('click',()=>flip.classList.toggle('flipped'));
+    card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip.classList.toggle('flipped');}});
+  });
 </script>
 </body>
 </html>
