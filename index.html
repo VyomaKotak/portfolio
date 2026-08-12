@@ -4,246 +4,253 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vyoma Kotak — Data Scientist & ML Engineer</title>
-<meta name="description" content="Vyoma Kotak — Data Scientist and ML Engineer in London, UK. Four years in production systems, now building reliable, production-grade machine learning: streaming pipelines, fraud detection, LLMs and agentic AI. MSc Data Science, Coventry University.">
+<meta name="description" content="Vyoma Kotak — Data Scientist and ML Engineer in London. I build machine learning that runs in production: real-time fraud detection at 0.998 PR-AUC, big-data NLP over 43.9M records, experimentation and LLM evaluation. MSc Data Science, Coventry University.">
 <meta property="og:title" content="Vyoma Kotak — Data Scientist & ML Engineer">
-<meta property="og:description" content="Building AI that survives production. Streaming pipelines, fraud detection at 0.998 PR-AUC, LLM evaluation and experimentation.">
+<meta property="og:description" content="I turn 40-million-row datasets into models that hold up under load. Streaming ML, experimentation, and applied AI.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0a0b12">
+<meta name="theme-color" content="#faf9f6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0b12;
-    --bg-2:#0f1119;
-    --panel:#12141f;
-    --panel-2:#171a27;
-    --line:#232636;
-    --line-2:#2c3042;
-    --txt:#eef0f7;
-    --txt-2:#a8adc2;
-    --txt-3:#6e7492;
-    --cyan:#22d3ee;
-    --violet:#8b5cf6;
-    --lime:#a3e635;
-    --pink:#f472b6;
-    --amber:#fbbf24;
-    --glow-cyan:rgba(34,211,238,.16);
-    --glow-violet:rgba(139,92,246,.18);
-    --display:'Space Grotesk',system-ui,sans-serif;
+    --paper:#faf9f6;
+    --paper-2:#f2f0ea;
+    --card:#ffffff;
+    --ink:#1a1a17;
+    --ink-2:#4d4a43;
+    --ink-3:#87837a;
+    --line:#e6e2d9;
+    --line-2:#d8d3c7;
+    --plot:#e9645a;      /* coral - primary data ink */
+    --plot-2:#2f6f6b;    /* teal */
+    --plot-3:#e0a13c;    /* ochre */
+    --plot-4:#5566c4;    /* indigo */
+    --plot-5:#8a5aa8;    /* plum */
+    --grid:#efece4;
+    --display:'Fraunces',Georgia,serif;
     --body:'Inter',system-ui,sans-serif;
     --mono:'JetBrains Mono',ui-monospace,monospace;
+    --shadow:0 1px 2px rgba(26,26,23,.04),0 10px 30px -20px rgba(26,26,23,.28);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--txt);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
-  ::selection{background:var(--violet);color:#fff}
+  ::selection{background:var(--plot);color:#fff}
   .wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+  svg{display:block}
 
-  /* ambient background glows */
-  .ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .ambient span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5}
-  .ambient .g1{width:520px;height:520px;background:var(--glow-violet);top:-160px;left:-120px}
-  .ambient .g2{width:460px;height:460px;background:var(--glow-cyan);top:40%;right:-160px}
-  .ambient .g3{width:400px;height:400px;background:rgba(163,230,53,.08);bottom:-120px;left:30%}
+  /* faint plotting-grid backdrop */
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:34px 34px;opacity:.5;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.12))}
   main,nav,footer{position:relative;z-index:1}
 
-  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet));z-index:100;transition:width .1s linear;box-shadow:0 0 10px var(--cyan)}
+  #progress{position:fixed;top:0;left:0;height:2.5px;width:0;background:var(--plot);z-index:100;transition:width .1s linear}
 
   /* nav */
-  nav.top{position:sticky;top:0;z-index:60;background:rgba(10,11,18,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav.top{position:sticky;top:0;z-index:60;background:rgba(250,249,246,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;font-size:1.06rem}
-  .mono-logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--violet),var(--cyan));display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#0a0b12;font-size:15px;box-shadow:0 0 18px var(--glow-violet)}
-  .navlinks{display:flex;gap:24px;font-size:14px;font-weight:450;color:var(--txt-2);font-family:var(--mono)}
-  .navlinks a{position:relative;transition:color .18s}
-  .navlinks a:hover{color:var(--cyan)}
-  @media(max-width:820px){.navlinks{display:none}}
-  .nav-cta{font-family:var(--mono);font-size:13px;padding:8px 15px;border:1px solid var(--line-2);border-radius:8px;color:var(--txt);transition:.2s}
-  .nav-cta:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 16px var(--glow-cyan)}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;font-size:1.08rem}
+  .monogram{width:34px;height:34px}
+  .navlinks{display:flex;gap:24px;font-size:13.5px;font-weight:450;color:var(--ink-2);font-family:var(--mono)}
+  .navlinks a{transition:color .18s}
+  .navlinks a:hover{color:var(--plot)}
+  @media(max-width:860px){.navlinks{display:none}}
+  .nav-cta{font-family:var(--mono);font-size:13px;padding:8px 15px;border:1px solid var(--ink);border-radius:8px;color:var(--ink);transition:.2s;display:inline-flex;gap:7px;align-items:center}
+  .nav-cta:hover{background:var(--ink);color:var(--paper)}
 
   /* hero */
-  .hero{padding:78px 0 64px}
-  .hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:54px;align-items:center}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero{padding:52px 0 48px}}
-  .pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;color:var(--txt-2);background:var(--panel);border:1px solid var(--line-2);border-radius:999px;padding:7px 15px;margin-bottom:26px}
-  .pill .d{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(163,230,53,.16);animation:pulse 2.4s infinite}
-  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(163,230,53,.16)}50%{box-shadow:0 0 0 6px rgba(163,230,53,.05)}}
-  .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.5rem,6vw,4.3rem);line-height:1.02;letter-spacing:-.025em;margin-bottom:24px}
-  .hero h1 .grad{background:linear-gradient(120deg,var(--cyan),var(--violet) 60%,var(--pink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .hero .lede{font-size:clamp(1.04rem,1.9vw,1.22rem);color:var(--txt-2);max-width:52ch;margin-bottom:16px}
-  .hero .lede strong{color:var(--txt);font-weight:600}
-  .hero .sub{font-family:var(--mono);font-size:13px;color:var(--txt-3);margin-bottom:32px}
+  .hero{padding:70px 0 50px}
+  .hero-grid{display:grid;grid-template-columns:1.4fr .95fr;gap:52px;align-items:center}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:38px}.hero{padding:46px 0 40px}}
+  .pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;color:var(--ink-2);background:var(--card);border:1px solid var(--line-2);border-radius:999px;padding:7px 15px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .pill svg{width:13px;height:13px}
+  .pill .d{width:7px;height:7px;border-radius:50%;background:var(--plot-2);box-shadow:0 0 0 3px rgba(47,111,107,.15)}
+  .hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2.5rem,6vw,4.4rem);line-height:1.01;letter-spacing:-.025em;margin-bottom:24px}
+  .hero h1 em{font-style:italic;color:var(--plot)}
+  .hero .lede{font-size:clamp(1.05rem,1.9vw,1.24rem);color:var(--ink-2);max-width:52ch;margin-bottom:16px}
+  .hero .lede strong{color:var(--ink);font-weight:600}
+  .hero .sub{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);margin-bottom:30px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .hero .sub svg{width:14px;height:14px;opacity:.7}
   .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-  .btn{font-family:var(--mono);font-size:13.5px;font-weight:500;padding:12px 21px;border-radius:10px;transition:.2s;display:inline-flex;gap:8px;align-items:center;border:1px solid transparent;cursor:pointer}
-  .btn.primary{background:linear-gradient(120deg,var(--cyan),var(--violet));color:#0a0b12;font-weight:600;box-shadow:0 6px 26px -8px var(--glow-violet)}
-  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px var(--glow-cyan)}
-  .btn.ghost{border-color:var(--line-2);background:var(--panel);color:var(--txt)}
-  .btn.ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);box-shadow:0 0 18px var(--glow-cyan)}
+  .btn{font-family:var(--mono);font-size:13.5px;font-weight:500;padding:12px 20px;border-radius:9px;transition:.2s;display:inline-flex;gap:8px;align-items:center;border:1px solid transparent;cursor:pointer}
+  .btn svg{width:15px;height:15px}
+  .btn.primary{background:var(--ink);color:var(--paper)}
+  .btn.primary:hover{background:var(--plot);transform:translateY(-2px)}
+  .btn.ghost{border-color:var(--line-2);background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+  .btn.ghost:hover{border-color:var(--plot);color:var(--plot);transform:translateY(-2px)}
 
-  /* hero photo */
-  .photo-wrap{position:relative}
-  .photo-frame{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line-2);background:var(--panel);aspect-ratio:896/1000;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
-  .photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block}
-  .photo-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,11,18,.55),transparent 42%)}
-  .photo-glow{position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(135deg,var(--cyan),var(--violet));z-index:-1;filter:blur(22px);opacity:.4}
-  .photo-badge{position:absolute;bottom:14px;left:14px;right:14px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--mono);font-size:11px;color:var(--txt-2)}
-  .photo-badge .nm{font-family:var(--display);font-weight:600;font-size:15px;color:#fff}
-  @media(max-width:860px){.photo-wrap{max-width:340px;margin:0 auto}}
+  /* hero photo as a "figure" */
+  .figure{position:relative}
+  .figure .frame{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);aspect-ratio:896/1010}
+  .figure .frame img{width:100%;height:100%;object-fit:cover;object-position:center 16%}
+  .figure .cap{position:absolute;left:-1px;bottom:-1px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;padding:7px 12px;border-radius:0 12px 0 12px;letter-spacing:.02em}
+  .figure .tag{position:absolute;top:12px;right:12px;background:var(--card);border:1px solid var(--line-2);font-family:var(--mono);font-size:10.5px;color:var(--ink-2);padding:5px 10px;border-radius:7px;box-shadow:var(--shadow)}
+  @media(max-width:880px){.figure{max-width:330px;margin:0 auto}}
 
-  /* marquee ticker of tech */
-  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);overflow:hidden;padding:14px 0}
-  .ticker-track{display:flex;gap:44px;white-space:nowrap;font-family:var(--mono);font-size:13px;color:var(--txt-3);animation:scroll 32s linear infinite;width:max-content}
-  .ticker-track span{display:inline-flex;gap:9px;align-items:center}
-  .ticker-track b{color:var(--cyan);font-weight:400}
-  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-  /* sections */
-  section{padding:84px 0}
-  .chapter{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;display:flex;align-items:center;gap:11px}
-  .chapter::before{content:"";width:24px;height:1px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
-  .chapter.violet{color:var(--violet)}.chapter.violet::before{background:var(--violet);box-shadow:0 0 8px var(--violet)}
-  .chapter.lime{color:var(--lime)}.chapter.lime::before{background:var(--lime);box-shadow:0 0 8px var(--lime)}
-  .chapter.pink{color:var(--pink)}.chapter.pink::before{background:var(--pink);box-shadow:0 0 8px var(--pink)}
-  .chapter.amber{color:var(--amber)}.chapter.amber::before{background:var(--amber);box-shadow:0 0 8px var(--amber)}
+  /* section scaffolding */
+  section{padding:80px 0}
+  .chapter{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--plot);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .chapter svg{width:15px;height:15px}
   .sec-title{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-.02em;margin-bottom:16px;line-height:1.1}
-  .sec-intro{color:var(--txt-2);max-width:62ch;margin-bottom:44px}
+  .sec-title em{font-style:italic;color:var(--plot)}
+  .sec-intro{color:var(--ink-2);max-width:62ch;margin-bottom:44px}
+  .alt{background:var(--paper-2)}
 
-  /* story: who I am */
+  /* who */
   .story-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px}
-  @media(max-width:820px){.story-grid{grid-template-columns:1fr;gap:32px}}
-  .story p{margin-bottom:17px;color:var(--txt-2)}
-  .story p strong{color:var(--txt);font-weight:600}
-  .story .pull{font-family:var(--display);font-size:1.5rem;line-height:1.35;color:var(--txt);font-weight:500;margin-bottom:24px;letter-spacing:-.01em}
-  .story .pull .grad{background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .spec{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;height:fit-content}
-  .spec .row{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+  @media(max-width:840px){.story-grid{grid-template-columns:1fr;gap:32px}}
+  .story p{margin-bottom:17px;color:var(--ink-2)}
+  .story p strong{color:var(--ink);font-weight:600}
+  .story .pull{font-family:var(--display);font-size:1.5rem;line-height:1.36;color:var(--ink);font-weight:500;margin-bottom:22px;letter-spacing:-.01em}
+  .story .pull em{font-style:italic;color:var(--plot)}
+  .spec{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px;height:fit-content;box-shadow:var(--shadow)}
+  .spec .row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
   .spec .row:last-child{border-bottom:0;padding-bottom:0}.spec .row:first-child{padding-top:0}
-  .spec .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--txt-3)}
-  .spec .v{font-weight:500;text-align:right;font-size:14.5px;color:var(--txt)}
+  .spec .k{font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3);display:flex;gap:7px;align-items:center}
+  .spec .k svg{width:13px;height:13px;color:var(--plot)}
+  .spec .v{font-weight:500;text-align:right;font-size:14px}
 
-  /* metric counters */
-  .metrics-band{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:6px}
+  /* metrics with sparkline vibe */
+  .metrics-band{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   @media(max-width:680px){.metrics-band{grid-template-columns:repeat(2,1fr)}}
-  .mcard{background:linear-gradient(160deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:15px;padding:26px 22px;position:relative;overflow:hidden;transition:.25s}
-  .mcard:hover{border-color:var(--line-2);transform:translateY(-3px)}
-  .mcard::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:var(--accent,var(--cyan));opacity:.7}
-  .mcard .n{font-family:var(--display);font-weight:700;font-size:2.3rem;line-height:1;letter-spacing:-.02em}
-  .mcard .n .u{font-size:1rem;color:var(--accent,var(--cyan))}
-  .mcard .c{font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--txt-3);margin-top:9px}
+  .mcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .mcard .n{font-family:var(--display);font-weight:700;font-size:2.2rem;line-height:1;letter-spacing:-.02em}
+  .mcard .n .u{font-size:1rem;color:var(--acc,var(--plot))}
+  .mcard .c{font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+  .mcard .spark{position:absolute;right:14px;top:16px;width:52px;height:24px;opacity:.85}
 
-  /* how I think - principle cards */
+  /* principles */
   .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media(max-width:820px){.principles{grid-template-columns:1fr}}
-  .principle{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:.25s;position:relative}
-  .principle:hover{border-color:var(--line-2);background:var(--panel-2);transform:translateY(-3px)}
-  .principle .ic{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-size:20px;margin-bottom:16px;background:var(--panel-2);border:1px solid var(--line-2)}
-  .principle h4{font-family:var(--display);font-weight:600;font-size:1.12rem;margin-bottom:9px}
-  .principle p{color:var(--txt-2);font-size:14.5px}
+  @media(max-width:840px){.principles{grid-template-columns:1fr}}
+  .principle{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:26px;box-shadow:var(--shadow);transition:.22s}
+  .principle:hover{transform:translateY(-3px);border-color:var(--line-2)}
+  .principle .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;margin-bottom:15px;background:var(--paper-2);border:1px solid var(--line)}
+  .principle .ic svg{width:21px;height:21px;color:var(--acc,var(--plot))}
+  .principle h4{font-family:var(--display);font-weight:600;font-size:1.12rem;margin-bottom:8px}
+  .principle p{color:var(--ink-2);font-size:14.5px}
 
-  /* projects as case studies */
+  /* architecture diagram */
+  .arch{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:var(--shadow);margin-top:8px;overflow-x:auto}
+  .arch h4{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px}
+
+  /* cases */
   .cases{display:flex;flex-direction:column;gap:22px}
-  .case{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px 34px;transition:.25s;position:relative;overflow:hidden}
-  .case:hover{border-color:var(--line-2);box-shadow:0 20px 50px -30px rgba(139,92,246,.5)}
-  .case::before{content:"";position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--accent,var(--cyan))}
-  .case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:14px}
-  .case h3{font-family:var(--display);font-weight:600;font-size:1.34rem;letter-spacing:-.01em}
-  .case .flag{font-family:var(--mono);font-size:11px;color:var(--accent,var(--cyan));border:1px solid var(--line-2);border-radius:6px;padding:3px 9px;margin-top:6px;display:inline-block}
-  .case .gh{font-family:var(--mono);font-size:12.5px;color:var(--txt-2);border:1px solid var(--line-2);border-radius:8px;padding:8px 13px;transition:.2s;white-space:nowrap}
-  .case .gh:hover{border-color:var(--accent,var(--cyan));color:var(--accent,var(--cyan))}
-  .stack{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 18px}
-  .chip{font-family:var(--mono);font-size:11.5px;color:var(--txt-2);background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:4px 10px}
-  .pv{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin-bottom:20px}
-  .pv .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent,var(--cyan));padding-top:3px}
-  .pv .txt{color:var(--txt-2);font-size:15px}
+  .case{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:30px 32px;box-shadow:var(--shadow);transition:.22s;position:relative}
+  .case:hover{transform:translateY(-2px);border-color:var(--line-2)}
+  .case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+  .case .titlewrap{display:flex;gap:13px;align-items:flex-start}
+  .case .pic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--acc-soft,#fdeceb);flex-shrink:0;margin-top:2px}
+  .case .pic svg{width:20px;height:20px;color:var(--acc,var(--plot))}
+  .case h3{font-family:var(--display);font-weight:600;font-size:1.32rem;letter-spacing:-.01em}
+  .case .flag{font-family:var(--mono);font-size:10.5px;color:var(--acc,var(--plot));border:1px solid var(--line-2);border-radius:6px;padding:3px 8px;margin-top:6px;display:inline-block}
+  .case .gh{font-family:var(--mono);font-size:12px;color:var(--ink-2);border:1px solid var(--line-2);border-radius:8px;padding:8px 13px;transition:.2s;white-space:nowrap;display:inline-flex;gap:6px;align-items:center}
+  .case .gh svg{width:14px;height:14px}
+  .case .gh:hover{border-color:var(--acc,var(--plot));color:var(--acc,var(--plot))}
+  .stack{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 18px}
+  .chip{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:4px 10px}
+  .case-body{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}
+  @media(max-width:720px){.case-body{grid-template-columns:1fr;gap:18px}}
+  .pv{display:grid;grid-template-columns:auto 1fr;gap:8px 15px}
+  .pv .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--acc,var(--plot));padding-top:3px}
+  .pv .txt{color:var(--ink-2);font-size:14.5px}
   @media(max-width:600px){.pv{grid-template-columns:1fr;gap:2px}.pv .lbl{padding-top:11px}}
-  .pmetrics{display:flex;gap:30px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px}
-  .pmetrics .m .n{font-family:var(--display);font-weight:700;font-size:1.4rem;line-height:1}
-  .pmetrics .m .n .u{color:var(--accent,var(--cyan));font-size:.8rem}
-  .pmetrics .m .c{font-family:var(--mono);font-size:10px;letter-spacing:.03em;text-transform:uppercase;color:var(--txt-3);margin-top:6px}
+  .case-viz{width:190px;flex-shrink:0}
+  @media(max-width:720px){.case-viz{width:100%;max-width:280px}}
+  .pmetrics{display:flex;gap:28px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:17px;margin-top:20px}
+  .pmetrics .m .n{font-family:var(--display);font-weight:700;font-size:1.35rem;line-height:1}
+  .pmetrics .m .n .u{color:var(--acc,var(--plot));font-size:.78rem}
+  .pmetrics .m .c{font-family:var(--mono);font-size:10px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-3);margin-top:5px}
 
   /* tech dashboard */
   .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media(max-width:820px){.tech-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:840px){.tech-grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:520px){.tech-grid{grid-template-columns:1fr}}
-  .techcard{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:22px;transition:.25s}
-  .techcard:hover{border-color:var(--accent,var(--cyan));transform:translateY(-3px);box-shadow:0 0 26px -6px var(--accent-glow,var(--glow-cyan))}
-  .techcard .cat{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent,var(--cyan));margin-bottom:15px;display:flex;align-items:center;gap:8px}
-  .techcard .cat .dot{width:8px;height:8px;border-radius:50%;background:var(--accent,var(--cyan));box-shadow:0 0 8px var(--accent,var(--cyan))}
+  .techcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);transition:.22s}
+  .techcard:hover{transform:translateY(-3px);border-color:var(--acc,var(--plot))}
+  .techcard .cat{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--acc,var(--plot));margin-bottom:14px;display:flex;align-items:center;gap:9px}
+  .techcard .cat svg{width:16px;height:16px}
   .techcard .items{display:flex;flex-wrap:wrap;gap:7px}
-  .techcard .items span{font-size:12.5px;color:var(--txt-2);background:var(--bg-2);border:1px solid var(--line);border-radius:7px;padding:5px 10px;transition:.18s}
-  .techcard .items span:hover{border-color:var(--accent,var(--cyan));color:var(--txt);transform:translateY(-1px)}
+  .techcard .items span{font-size:12.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:7px;padding:5px 10px;transition:.16s}
+  .techcard .items span:hover{border-color:var(--acc,var(--plot));color:var(--ink);transform:translateY(-1px)}
 
   /* timeline */
-  .tl{position:relative;padding-left:30px;max-width:760px}
-  .tl::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--violet),var(--cyan),transparent)}
+  .tl{position:relative;padding-left:30px;max-width:770px}
+  .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line-2)}
   .tl-item{position:relative;margin-bottom:32px}
   .tl-item:last-child{margin-bottom:0}
-  .tl-item::before{content:"";position:absolute;left:-30px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--cyan);box-shadow:0 0 10px var(--glow-cyan)}
-  .tl-item.past::before{border-color:var(--txt-3);box-shadow:none}
-  .tl-when{font-family:var(--mono);font-size:12px;color:var(--txt-3);margin-bottom:4px}
-  .tl-role{font-family:var(--display);font-weight:600;font-size:1.14rem}
-  .tl-role .at{color:var(--cyan);font-weight:500;font-family:var(--body);font-size:.92rem}
+  .tl-item::before{content:"";position:absolute;left:-30px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2.5px solid var(--plot)}
+  .tl-item.past::before{border-color:var(--ink-3)}
+  .tl-when{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-bottom:4px}
+  .tl-role{font-family:var(--display);font-weight:600;font-size:1.14rem;display:flex;align-items:center;gap:9px}
+  .tl-role svg{width:17px;height:17px;color:var(--plot)}
+  .tl-role .at{color:var(--ink-3);font-weight:500;font-family:var(--body);font-size:.9rem}
   .tl ul{list-style:none;margin-top:8px}
-  .tl li{color:var(--txt-2);font-size:14.5px;padding-left:18px;position:relative;margin-bottom:6px}
-  .tl li::before{content:"▸";position:absolute;left:0;color:var(--violet)}
+  .tl li{color:var(--ink-2);font-size:14.5px;padding-left:18px;position:relative;margin-bottom:6px}
+  .tl li::before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--plot-2)}
 
-  /* why hire me */
-  .why{background:linear-gradient(160deg,var(--panel-2),var(--bg-2));border:1px solid var(--line-2);border-radius:22px;padding:44px}
-  @media(max-width:600px){.why{padding:30px 24px}}
-  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:8px}
+  /* why hire */
+  .why{background:var(--card);border:1px solid var(--line-2);border-radius:20px;padding:42px;box-shadow:var(--shadow)}
+  @media(max-width:600px){.why{padding:28px 22px}}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:10px}
   @media(max-width:680px){.why-grid{grid-template-columns:1fr}}
-  .why-item{display:flex;gap:15px}
-  .why-item .n{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--violet);line-height:1;min-width:30px}
-  .why-item h4{font-family:var(--display);font-weight:600;font-size:1.06rem;margin-bottom:5px}
-  .why-item p{color:var(--txt-2);font-size:14.5px}
+  .why-item{display:flex;gap:14px}
+  .why-item .ic{width:38px;height:38px;border-radius:10px;background:var(--paper-2);border:1px solid var(--line);display:grid;place-items:center;flex-shrink:0}
+  .why-item .ic svg{width:19px;height:19px;color:var(--plot)}
+  .why-item h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin-bottom:4px}
+  .why-item p{color:var(--ink-2);font-size:14px}
 
-  /* edu + certs */
+  /* edu certs */
   .two{display:grid;grid-template-columns:1fr 1fr;gap:44px}
-  @media(max-width:720px){.two{grid-template-columns:1fr;gap:34px}}
-  .mini-h{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
-  .edu-item{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px;margin-bottom:13px}
+  @media(max-width:720px){.two{grid-template-columns:1fr;gap:32px}}
+  .mini-h{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--plot-3);margin-bottom:18px;display:flex;gap:8px;align-items:center}
+  .mini-h svg{width:15px;height:15px}
+  .edu-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:19px;margin-bottom:13px;box-shadow:var(--shadow)}
   .edu-item .d{font-family:var(--display);font-weight:600;font-size:1.05rem}
-  .edu-item .s{color:var(--txt-3);font-size:13.5px;margin-top:2px;font-family:var(--mono)}
+  .edu-item .s{color:var(--ink-3);font-size:13px;margin-top:2px;font-family:var(--mono)}
   .cert-list{list-style:none}
-  .cert-list li{color:var(--txt-2);font-size:14.5px;padding:11px 0 11px 22px;position:relative;border-bottom:1px solid var(--line)}
+  .cert-list li{color:var(--ink-2);font-size:14.5px;padding:11px 0 11px 24px;position:relative;border-bottom:1px solid var(--line)}
   .cert-list li:last-child{border-bottom:0}
-  .cert-list li::before{content:"◆";position:absolute;left:0;color:var(--violet);font-size:9px;top:15px}
+  .cert-list li svg{position:absolute;left:0;top:13px;width:15px;height:15px;color:var(--plot-4)}
 
   /* contact */
-  .contact{text-align:center;background:linear-gradient(180deg,transparent,var(--bg-2))}
-  .contact h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4.6vw,3.1rem);letter-spacing:-.02em;margin-bottom:18px;line-height:1.08}
-  .contact h2 .grad{background:linear-gradient(120deg,var(--cyan),var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .contact p{max-width:52ch;margin:0 auto 34px;color:var(--txt-2)}
+  .contact{text-align:center}
+  .contact h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,3.1rem);letter-spacing:-.02em;margin-bottom:18px;line-height:1.08}
+  .contact h2 em{font-style:italic;color:var(--plot)}
+  .contact p{max-width:52ch;margin:0 auto 32px;color:var(--ink-2)}
 
-  footer{padding:30px 0;border-top:1px solid var(--line);font-family:var(--mono);font-size:12.5px;color:var(--txt-3)}
+  footer{padding:30px 0;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--ink-3)}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  footer a:hover{color:var(--cyan)}
+  footer a:hover{color:var(--plot)}
 
   @media(prefers-reduced-motion:no-preference){
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
     .reveal.in{opacity:1;transform:none}
+    .draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.4s ease}
+    .draw.in{stroke-dashoffset:0}
   }
-  @media(prefers-reduced-motion:reduce){.ticker-track{animation:none}.pill .d{animation:none}}
 </style>
 </head>
 <body>
 
 <div id="progress"></div>
-<div class="ambient"><span class="g1"></span><span class="g2"></span><span class="g3"></span></div>
 
 <nav class="top">
   <div class="wrap">
-    <a class="brand" href="#top"><span class="mono-logo">VK</span> Vyoma Kotak</a>
+    <a class="brand" href="#top">
+      <svg class="monogram" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="9" fill="#1a1a17"/><path d="M8 10l4.5 11L17 10" stroke="#e9645a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21l3.5-11M22.5 10l3.5 11" stroke="#faf9f6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Vyoma Kotak
+    </a>
     <div class="navlinks">
       <a href="#who">Who</a>
-      <a href="#think">How I think</a>
+      <a href="#think">Approach</a>
       <a href="#work">Work</a>
       <a href="#tech">Toolkit</a>
-      <a href="#hire">Why hire me</a>
+      <a href="#hire">Why me</a>
     </div>
-    <a class="nav-cta" href="cv.pdf" download>Download CV ↓</a>
+    <a class="nav-cta" href="cv.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> CV</a>
   </div>
 </nav>
 
@@ -251,118 +258,178 @@
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
-      <div class="pill"><span class="d"></span> Open to Data Science, ML & AI Engineer roles in the UK</div>
-      <h1>Building AI that <span class="grad">survives production.</span></h1>
-      <p class="lede">I spent four years inside enterprise systems learning what breaks at 2am and why. Now I bring that instinct for <strong>reliability and clean engineering</strong> to machine learning, from streaming pipelines to LLM and agentic systems.</p>
-      <p class="sub">MSc Data Science @ Coventry · Ex-System Engineer @ TCS · London, UK</p>
+      <div class="pill"><span class="d"></span> Open to Data Science, ML & AI Engineer roles · UK</div>
+      <h1>I make data <em>behave</em> under load.</h1>
+      <p class="lede">Give me forty million messy rows and a business question, and I'll hand back a model that answers it, then keep answering it in production. I work the <strong>whole path</strong>: ingestion, modelling, serving, and the monitoring that keeps it honest.</p>
+      <p class="sub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        London · MSc Data Science, Coventry · Ex-Systems Engineer, TCS
+      </p>
       <div class="cta-row">
-        <a class="btn primary" href="#work">Explore my work →</a>
-        <a class="btn ghost" href="cv.pdf" download>Download CV</a>
-        <a class="btn ghost" href="#hire">Why hire me</a>
+        <a class="btn primary" href="#work">See the work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a class="btn ghost" href="cv.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+        <a class="btn ghost" href="#hire">Why me</a>
       </div>
     </div>
-    <div class="photo-wrap">
-      <div class="photo-glow"></div>
-      <div class="photo-frame">
-        <img src="vyoma.jpg" alt="Vyoma Kotak" loading="eager">
-        <div class="photo-badge">
-          <span class="nm">Vyoma Kotak</span>
-          <span>London, UK</span>
-        </div>
-      </div>
+    <div class="figure">
+      <div class="tag">fig.01 — V. Kotak</div>
+      <div class="frame"><img src="vyoma.jpg" alt="Vyoma Kotak"></div>
+      <div class="cap">Data Scientist · ML Engineer</div>
     </div>
   </div>
 </header>
 
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span><b>▹</b> Python</span><span><b>▹</b> PySpark</span><span><b>▹</b> Kafka</span><span><b>▹</b> Spark Structured Streaming</span><span><b>▹</b> FastAPI</span><span><b>▹</b> Docker</span><span><b>▹</b> scikit-learn</span><span><b>▹</b> XGBoost</span><span><b>▹</b> PyTorch</span><span><b>▹</b> SHAP</span><span><b>▹</b> LLMs</span><span><b>▹</b> RAG</span><span><b>▹</b> Agentic AI</span><span><b>▹</b> AWS</span><span><b>▹</b> Tableau</span>
-    <span><b>▹</b> Python</span><span><b>▹</b> PySpark</span><span><b>▹</b> Kafka</span><span><b>▹</b> Spark Structured Streaming</span><span><b>▹</b> FastAPI</span><span><b>▹</b> Docker</span><span><b>▹</b> scikit-learn</span><span><b>▹</b> XGBoost</span><span><b>▹</b> PyTorch</span><span><b>▹</b> SHAP</span><span><b>▹</b> LLMs</span><span><b>▹</b> RAG</span><span><b>▹</b> Agentic AI</span><span><b>▹</b> AWS</span><span><b>▹</b> Tableau</span>
-  </div>
-</div>
-
-<!-- WHO I AM -->
+<!-- WHO -->
 <section id="who">
   <div class="wrap reveal">
-    <div class="chapter">01 — Who I am</div>
+    <div class="chapter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg>
+      Chapter 01 — The short version
+    </div>
     <div class="story-grid story">
       <div>
-        <p class="pull">Most data scientists have never had to explain a system failure to a client at 2am. <span class="grad">I have — just with SAP, not a model.</span></p>
-        <p>I joined Tata Consultancy Services in 2021 and spent four years deep inside enterprise systems: SAP BASIS administration first, then Python development building web applications and REST APIs. Midnight upgrades, 6am incidents, stakeholders who needed answers before their morning coffee.</p>
-        <p>That shift, from keeping systems alive to building the logic running on top of them, is where my move into data science began. <strong>Reliability, monitoring and clean system design are habits for me, not afterthoughts I bolt on at the end.</strong> It's the difference between a model that demos well and one a business can actually run on.</p>
+        <p class="pull">Before I ever tuned a model, I was the person a global client called when a live system fell over at 2am. <em>You learn a lot about reliability that way.</em></p>
+        <p>For four years at Tata Consultancy Services I lived inside enterprise infrastructure, first administering SAP landscapes for global clients, then writing the Python and APIs that ran on top of them. It was unglamorous, high-stakes work: keep it up, keep it fast, explain it when it isn't.</p>
+        <p>When I started applying machine learning to real datasets, that background turned out to be the advantage. I don't treat deployment as someone else's job. <strong>I build models the way I used to run systems, assuming they'll be under load, watched, and expected to keep working long after launch.</strong></p>
       </div>
       <div class="spec">
-        <div class="row"><span class="k">Location</span><span class="v">London, UK</span></div>
-        <div class="row"><span class="k">Experience</span><span class="v">4+ years</span></div>
-        <div class="row"><span class="k">Education</span><span class="v">MSc Data Science · Coventry</span></div>
-        <div class="row"><span class="k">Focus</span><span class="v">Production ML · LLMs · Agentic AI</span></div>
-        <div class="row"><span class="k">Languages</span><span class="v">English · Hindi · Gujarati</span></div>
-        <div class="row"><span class="k">Status</span><span class="v">Open · sponsorship required</span></div>
+        <div class="row"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Based in</span><span class="v">London, UK</span></div>
+        <div class="row"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Experience</span><span class="v">4+ years</span></div>
+        <div class="row"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Studying</span><span class="v">MSc Data Science · Coventry</span></div>
+        <div class="row"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>Focus</span><span class="v">Production ML · LLMs · Agentic AI</span></div>
+        <div class="row"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>Languages</span><span class="v">English · Hindi · Gujarati</span></div>
+        <div class="row"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>Status</span><span class="v">Open to UK roles</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE PROBLEM I LOVE -->
-<section id="problem" style="padding-top:20px">
+<!-- PROBLEM + metrics -->
+<section id="problem" class="alt">
   <div class="wrap reveal">
-    <div class="chapter violet">02 — The problem I love solving</div>
-    <h2 class="sec-title">Turning noisy, messy data into decisions people can trust.</h2>
-    <p class="sec-intro">Every problem I enjoy comes back to the same question: how do we make sense of complex, noisy information so that better decisions follow? Lately that has pulled me toward the production edge of AI, where the gap between a working prototype and a system a business can rely on is exactly the kind of problem I find interesting.</p>
+    <div class="chapter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+      Chapter 02 — The thing I keep chasing
+    </div>
+    <h2 class="sec-title">Signal, pulled out of <em>noise</em>, at a scale that matters.</h2>
+    <p class="sec-intro">Almost every problem I enjoy reduces to one shape: a large, messy, real-world dataset that clearly contains an answer, and the engineering work needed to get that answer out reliably and fast enough to act on. Here is that instinct, in numbers.</p>
     <div class="metrics-band">
-      <div class="mcard" style="--accent:var(--cyan)"><div class="n" data-target="4" data-suffix="+">0<span class="u">+</span></div><div class="c">Years in production</div></div>
-      <div class="mcard" style="--accent:var(--violet)"><div class="n" data-target="7">0</div><div class="c">Shipped projects</div></div>
-      <div class="mcard" style="--accent:var(--lime)"><div class="n" data-target="43.9" data-suffix="M" data-dec="1">0<span class="u">M</span></div><div class="c">Rows processed</div></div>
-      <div class="mcard" style="--accent:var(--pink)"><div class="n" data-target="0.998" data-dec="3">0</div><div class="c">Best model PR-AUC</div></div>
+      <div class="mcard" style="--acc:var(--plot)">
+        <svg class="spark" viewBox="0 0 52 24" fill="none"><polyline class="draw" points="0,20 10,17 20,18 30,10 42,7 52,3" stroke="#e9645a" stroke-width="2" stroke-linecap="round" pathLength="1"/></svg>
+        <div class="n" data-target="4" data-suffix="+">0<span class="u">+</span></div><div class="c">Years in production</div>
+      </div>
+      <div class="mcard" style="--acc:var(--plot-2)">
+        <svg class="spark" viewBox="0 0 52 24" fill="none"><polyline class="draw" points="0,21 12,15 24,16 36,9 52,4" stroke="#2f6f6b" stroke-width="2" stroke-linecap="round" pathLength="1"/></svg>
+        <div class="n" data-target="7">0</div><div class="c">Projects shipped</div>
+      </div>
+      <div class="mcard" style="--acc:var(--plot-4)">
+        <svg class="spark" viewBox="0 0 52 24" fill="none"><polyline class="draw" points="0,22 14,20 28,12 40,10 52,2" stroke="#5566c4" stroke-width="2" stroke-linecap="round" pathLength="1"/></svg>
+        <div class="n" data-target="43.9" data-suffix="M" data-dec="1">0<span class="u">M</span></div><div class="c">Rows processed</div>
+      </div>
+      <div class="mcard" style="--acc:var(--plot-3)">
+        <svg class="spark" viewBox="0 0 52 24" fill="none"><polyline class="draw" points="0,18 12,12 26,13 38,6 52,4" stroke="#e0a13c" stroke-width="2" stroke-linecap="round" pathLength="1"/></svg>
+        <div class="n" data-target="0.998" data-dec="3">0</div><div class="c">Best PR-AUC</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- HOW I THINK -->
+<!-- APPROACH + architecture diagram -->
 <section id="think">
   <div class="wrap reveal">
-    <div class="chapter lime">03 — How I think</div>
-    <h2 class="sec-title">Three habits from four years on call.</h2>
-    <p class="sec-intro">Production systems engineering leaves marks. These are the ones that shape how I build machine learning.</p>
+    <div class="chapter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/><path d="M9 21h6M10 17v4M14 17v4"/></svg>
+      Chapter 03 — How I actually work
+    </div>
+    <h2 class="sec-title">Three convictions, earned the hard way.</h2>
+    <p class="sec-intro">Four years on call for systems that couldn't go down left me with a few opinions about how machine learning should be built.</p>
     <div class="principles">
-      <div class="principle">
-        <div class="ic">🛡️</div>
-        <h4>Design for failure first</h4>
-        <p>My first question isn't "which algorithm" but "what breaks this in production?" Class imbalance, schema drift, train/serve skew: I plan for them before the metric.</p>
+      <div class="principle" style="--acc:var(--plot)">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>The failure modes come first</h4>
+        <p>Before I pick a model I map what will break it: class imbalance, drift, train/serve skew, leakage. Design for those, and accuracy tends to look after itself.</p>
       </div>
-      <div class="principle">
-        <div class="ic">📡</div>
-        <h4>Reliability is a feature</h4>
-        <p>A model that can't score in real time is a research paper, not a product. Monitoring, containerisation and reproducibility come standard, not as an afterthought.</p>
+      <div class="principle" style="--acc:var(--plot-2)">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 8-8M2 16a12 12 0 0 1 12-12"/><circle cx="6" cy="18" r="2" fill="currentColor" stroke="none"/></svg></div>
+        <h4>A metric should cost something</h4>
+        <p>Accuracy on imbalanced data is a comforting lie. I choose metrics that reflect real consequences, and I expose the threshold so the business owns the trade-off, not a default.</p>
       </div>
-      <div class="principle">
-        <div class="ic">💬</div>
-        <h4>Translate, don't just compute</h4>
-        <p>Data science that can't be communicated is just expensive maths. I turn technical findings into insight both technical and business audiences can act on.</p>
+      <div class="principle" style="--acc:var(--plot-4)">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h4>If I can't explain it, it isn't finished</h4>
+        <p>A result nobody understands can't be trusted or acted on. SHAP, clear visuals, and plain language are part of the deliverable, not an extra.</p>
       </div>
+    </div>
+
+    <div class="arch reveal" style="margin-top:28px">
+      <h4>▸ How a model reaches production — my default pipeline</h4>
+      <svg viewBox="0 0 920 150" width="100%" style="min-width:720px" fill="none" font-family="JetBrains Mono, monospace">
+        <!-- connectors -->
+        <g stroke="#d8d3c7" stroke-width="2">
+          <line class="draw" x1="132" y1="55" x2="170" y2="55" pathLength="1"/>
+          <line class="draw" x1="292" y1="55" x2="330" y2="55" pathLength="1"/>
+          <line class="draw" x1="452" y1="55" x2="490" y2="55" pathLength="1"/>
+          <line class="draw" x1="612" y1="55" x2="650" y2="55" pathLength="1"/>
+          <line class="draw" x1="772" y1="55" x2="810" y2="55" pathLength="1"/>
+        </g>
+        <!-- feedback loop -->
+        <path class="draw" d="M855 78 L855 120 L60 120 L60 78" stroke="#e9645a" stroke-width="2" stroke-dasharray="5 5" pathLength="1"/>
+        <text x="457" y="138" fill="#87837a" font-size="11" text-anchor="middle">monitoring &amp; drift feedback → retrain</text>
+        <!-- nodes -->
+        <g>
+          <rect x="12" y="32" width="120" height="46" rx="9" fill="#fdeceb" stroke="#e9645a"/><text x="72" y="60" fill="#1a1a17" font-size="12.5" text-anchor="middle">Ingest</text>
+          <rect x="172" y="32" width="120" height="46" rx="9" fill="#eaf3f2" stroke="#2f6f6b"/><text x="232" y="55" fill="#1a1a17" font-size="12.5" text-anchor="middle">Features</text><text x="232" y="70" fill="#87837a" font-size="9" text-anchor="middle">shared module</text>
+          <rect x="332" y="32" width="120" height="46" rx="9" fill="#eef0fb" stroke="#5566c4"/><text x="392" y="60" fill="#1a1a17" font-size="12.5" text-anchor="middle">Train + tune</text>
+          <rect x="492" y="32" width="120" height="46" rx="9" fill="#fbf3e4" stroke="#e0a13c"/><text x="552" y="55" fill="#1a1a17" font-size="12.5" text-anchor="middle">Evaluate</text><text x="552" y="70" fill="#87837a" font-size="9" text-anchor="middle">honest metrics</text>
+          <rect x="652" y="32" width="120" height="46" rx="9" fill="#f3ecf7" stroke="#8a5aa8"/><text x="712" y="55" fill="#1a1a17" font-size="12.5" text-anchor="middle">Serve</text><text x="712" y="70" fill="#87837a" font-size="9" text-anchor="middle">API · container</text>
+          <rect x="812" y="32" width="96" height="46" rx="9" fill="#fdeceb" stroke="#e9645a"/><text x="860" y="60" fill="#1a1a17" font-size="12.5" text-anchor="middle">Monitor</text>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
 
-<!-- WHAT I'VE BUILT -->
-<section id="work">
+<!-- WORK -->
+<section id="work" class="alt">
   <div class="wrap reveal">
-    <div class="chapter pink">04 — What I've built</div>
-    <h2 class="sec-title">Seven projects that ship, not just train.</h2>
-    <p class="sec-intro">Each built end to end, with real datasets, real scale, and measurable outcomes. Not notebooks that only run on my laptop.</p>
+    <div class="chapter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+      Chapter 04 — Selected work
+    </div>
+    <h2 class="sec-title">Seven builds, each solving a <em>real</em> problem.</h2>
+    <p class="sec-intro">Not tutorials rerun with new data. Each of these started from a question a business would actually ask, and ends with something measurable.</p>
 
     <div class="cases">
 
-      <article class="case" style="--accent:var(--cyan)">
+      <article class="case" style="--acc:var(--plot);--acc-soft:#fdeceb">
         <div class="case-top">
-          <div><h3>Real-Time Fraud Detection Platform</h3><span class="flag">Flagship · Streaming ML</span></div>
-          <a class="gh" href="https://github.com/VyomaKotak/Real-Time-Fraud-Detection-Platform" target="_blank" rel="noopener">GitHub ↗</a>
+          <div class="titlewrap">
+            <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <div><h3>Real-Time Fraud Detection Platform</h3><span class="flag">Flagship · Streaming ML</span></div>
+          </div>
+          <a class="gh" href="https://github.com/VyomaKotak/Real-Time-Fraud-Detection-Platform" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6a4 4 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>Code</a>
         </div>
-        <div class="stack"><span class="chip">Python</span><span class="chip">Kafka</span><span class="chip">Spark Structured Streaming</span><span class="chip">FastAPI</span><span class="chip">Streamlit</span><span class="chip">Docker</span></div>
-        <div class="pv">
-          <div class="lbl">Problem</div><div class="txt">Fraud is only 0.13% of transactions. A model that predicts "never fraud" is 99.87% accurate and completely worthless. Transactions must be judged in milliseconds, at thousands per second, without blocking real customers.</div>
-          <div class="lbl">Approach</div><div class="txt">An end-to-end streaming platform scoring transactions through Kafka, Spark Structured Streaming, an ML model, FastAPI and a live dashboard. A shared feature module runs across training, the API and the Spark scorer to kill train/serve skew, with the decision threshold exposed for the business to tune against a cost matrix.</div>
-          <div class="lbl">Why it's different</div><div class="txt">It treats the imbalance honestly, reporting PR-AUC rather than the flattering ROC-AUC, and treats the false-positive tradeoff as a business decision, not a hidden default.</div>
+        <div class="stack"><span class="chip">Python</span><span class="chip">Kafka</span><span class="chip">Spark Structured Streaming</span><span class="chip">FastAPI</span><span class="chip">Docker</span></div>
+        <div class="case-body">
+          <div class="pv">
+            <div class="lbl">Problem</div><div class="txt">Fraud is 0.13% of transactions, so a model that cries "all clean" scores 99.87% and is useless. Verdicts are needed in milliseconds, at thousands per second, without freezing out real customers.</div>
+            <div class="lbl">Approach</div><div class="txt">A streaming platform: Kafka → Spark scoring → FastAPI → live dashboard. One shared feature module spans training and serving to kill train/serve skew, and the decision threshold is tunable against a cost matrix.</div>
+          </div>
+          <div class="case-viz">
+            <!-- PR curve mini -->
+            <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
+              <line x1="30" y1="10" x2="30" y2="100" stroke="#d8d3c7"/><line x1="30" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
+              <path class="draw" d="M30 14 C120 14 150 16 168 96" stroke="#e9645a" stroke-width="2.5" pathLength="1"/>
+              <text x="105" y="116" fill="#87837a" font-size="9" text-anchor="middle">recall →</text>
+              <text x="14" y="55" fill="#87837a" font-size="9" text-anchor="middle" transform="rotate(-90 14 55)">precision</text>
+              <text x="120" y="30" fill="#e9645a" font-size="10">PR-AUC 0.998</text>
+            </svg>
+          </div>
         </div>
         <div class="pmetrics">
           <div class="m"><div class="n">6.36<span class="u">M</span></div><div class="c">transactions</div></div>
@@ -372,107 +439,197 @@
         </div>
       </article>
 
-      <article class="case" style="--accent:var(--violet)">
+      <article class="case" style="--acc:var(--plot-2);--acc-soft:#eaf3f2">
         <div class="case-top">
-          <div><h3>Amazon Review Sentiment at Scale</h3><span class="flag">Flagship · Big Data NLP</span></div>
-          <a class="gh" href="https://github.com/VyomaKotak/Amazon-Reviews-Sentiment-Classification" target="_blank" rel="noopener">GitHub ↗</a>
+          <div class="titlewrap">
+            <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.5V4z"/><path d="M8 9h8M8 12h5"/></svg></div>
+            <div><h3>Amazon Review Sentiment at Scale</h3><span class="flag">Flagship · Big-Data NLP</span></div>
+          </div>
+          <a class="gh" href="https://github.com/VyomaKotak/Amazon-Reviews-Sentiment-Classification" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6a4 4 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>Code</a>
         </div>
         <div class="stack"><span class="chip">Python</span><span class="chip">PySpark</span><span class="chip">Spark MLlib</span><span class="chip">TF-IDF</span><span class="chip">SHAP</span><span class="chip">Tableau</span></div>
-        <div class="pv">
-          <div class="lbl">Problem</div><div class="txt">43.9M Amazon Electronics reviews (21 GB) of unread feedback. At this scale pandas runs out of memory before it finishes loading the file.</div>
-          <div class="lbl">Approach</div><div class="txt">A six-stage PySpark ML pipeline (Tokenizer, StopWords, TF-IDF, Scaler) benchmarking four classifiers with cross-validation. Optimised with caching, repartitioning and skew analysis, explained with SHAP, delivered as four Tableau dashboards.</div>
-          <div class="lbl">Why it's different</div><div class="txt">The finding earns its keep: a well-tuned linear model beat tree ensembles on high-dimensional sparse text, where ensembles struggle to split across 10,000 features.</div>
+        <div class="case-body">
+          <div class="pv">
+            <div class="lbl">Problem</div><div class="txt">43.9M Amazon Electronics reviews, 21 GB of feedback nobody had time to read. At that size, everyday tooling runs out of memory before it starts.</div>
+            <div class="lbl">Approach</div><div class="txt">A six-stage PySpark pipeline benchmarking four classifiers, tuned with caching, repartitioning and skew analysis, explained with SHAP and shipped as Tableau dashboards. The twist: a linear model beat the ensembles on sparse text.</div>
+          </div>
+          <div class="case-viz">
+            <!-- bar chart F1 -->
+            <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
+              <line x1="30" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
+              <rect class="grow" x="42" y="46" width="24" height="54" rx="3" fill="#2f6f6b"/>
+              <rect class="grow" x="82" y="60" width="24" height="40" rx="3" fill="#bcd6d3"/>
+              <rect class="grow" x="122" y="66" width="24" height="34" rx="3" fill="#bcd6d3"/>
+              <text x="54" y="40" fill="#2f6f6b" font-size="10" text-anchor="middle">.851</text>
+              <text x="54" y="114" fill="#87837a" font-size="8" text-anchor="middle">LogReg</text>
+              <text x="94" y="114" fill="#87837a" font-size="8" text-anchor="middle">RF</text>
+              <text x="134" y="114" fill="#87837a" font-size="8" text-anchor="middle">GBT</text>
+              <text x="14" y="55" fill="#87837a" font-size="9" text-anchor="middle" transform="rotate(-90 14 55)">F1</text>
+            </svg>
+          </div>
         </div>
         <div class="pmetrics">
-          <div class="m"><div class="n">43.9<span class="u">M</span></div><div class="c">reviews processed</div></div>
-          <div class="m"><div class="n">0.851</div><div class="c">F1 (best model)</div></div>
+          <div class="m"><div class="n">43.9<span class="u">M</span></div><div class="c">reviews</div></div>
+          <div class="m"><div class="n">0.851</div><div class="c">F1</div></div>
           <div class="m"><div class="n">0.915</div><div class="c">AUC</div></div>
-          <div class="m"><div class="n">21<span class="u">GB</span></div><div class="c">dataset size</div></div>
+          <div class="m"><div class="n">21<span class="u">GB</span></div><div class="c">dataset</div></div>
         </div>
       </article>
 
-      <article class="case" style="--accent:var(--lime)">
+      <article class="case" style="--acc:var(--plot-4);--acc-soft:#eef0fb">
         <div class="case-top">
-          <div><h3>A/B Test Analysis & Experiment Design</h3><span class="flag">Causal inference</span></div>
-          <a class="gh" href="https://github.com/VyomaKotak/ab-test-experimentation" target="_blank" rel="noopener">GitHub ↗</a>
+          <div class="titlewrap">
+            <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="4" height="6"/><rect x="14" y="7" width="4" height="11"/></svg></div>
+            <div><h3>A/B Test Analysis & Experiment Design</h3><span class="flag">Causal inference</span></div>
+          </div>
+          <a class="gh" href="https://github.com/VyomaKotak/ab-test-experimentation" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6a4 4 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>Code</a>
         </div>
         <div class="stack"><span class="chip">Python</span><span class="chip">Criteo Uplift</span><span class="chip">Power analysis</span><span class="chip">SRM check</span><span class="chip">Benjamini-Hochberg</span></div>
-        <div class="pv">
-          <div class="lbl">Problem</div><div class="txt">Most A/B portfolio projects run a t-test on two columns and stop. The parts that matter sit either side of that test: sizing before collecting data, confirming randomisation worked, correcting for multiple metrics.</div>
-          <div class="lbl">Approach</div><div class="txt">A full experimentation lifecycle over a real 14M-user Criteo incrementality test plus a simulated fintech experiment with planted ground truth: power analysis, chi-square SRM checks, two-proportion and Welch tests, multiple-testing correction, and a ship / do-not-ship decision.</div>
+        <div class="case-body">
+          <div class="pv">
+            <div class="lbl">Problem</div><div class="txt">Most A/B projects run one t-test and stop. The parts that decide whether a result is real sit either side of that test: sizing before you collect, checking randomisation held, correcting across metrics.</div>
+            <div class="lbl">Approach</div><div class="txt">A full lifecycle over a real 14M-user Criteo test plus a simulated fintech experiment with planted ground truth: power analysis, SRM checks, proportion and Welch tests, multiple-testing correction, and a clear ship / hold verdict.</div>
+          </div>
+          <div class="case-viz">
+            <!-- two distributions -->
+            <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
+              <line x1="20" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
+              <path class="draw" d="M20 100 C60 100 55 40 85 40 C110 40 105 100 150 100" stroke="#c9cdd6" stroke-width="2" pathLength="1"/>
+              <path class="draw" d="M50 100 C95 100 90 24 120 24 C150 24 145 100 185 100" stroke="#5566c4" stroke-width="2.5" pathLength="1"/>
+              <text x="70" y="52" fill="#87837a" font-size="9">A</text>
+              <text x="128" y="36" fill="#5566c4" font-size="9">B +59%</text>
+            </svg>
+          </div>
         </div>
         <div class="pmetrics">
-          <div class="m"><div class="n">14<span class="u">M</span></div><div class="c">users analysed</div></div>
-          <div class="m"><div class="n">+59<span class="u">%</span></div><div class="c">conversion lift found</div></div>
-          <div class="m"><div class="n">SHIP</div><div class="c">verdict, post-correction</div></div>
+          <div class="m"><div class="n">14<span class="u">M</span></div><div class="c">users</div></div>
+          <div class="m"><div class="n">+59<span class="u">%</span></div><div class="c">lift found</div></div>
+          <div class="m"><div class="n">SHIP</div><div class="c">post-correction</div></div>
         </div>
       </article>
 
-      <article class="case" style="--accent:var(--pink)">
+      <article class="case" style="--acc:var(--plot-5);--acc-soft:#f3ecf7">
         <div class="case-top">
-          <div><h3>LLM Prompt-Strategy Evaluation Harness</h3><span class="flag">GenAI · Evaluation</span></div>
-          <a class="gh" href="https://github.com/VyomaKotak/prompt-strategy-eval" target="_blank" rel="noopener">GitHub ↗</a>
+          <div class="titlewrap">
+            <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M4 12H2M22 12h-2M12 4V2M12 22v-2"/></svg></div>
+            <div><h3>LLM Prompt-Strategy Evaluation Harness</h3><span class="flag">Applied AI · Evaluation</span></div>
+          </div>
+          <a class="gh" href="https://github.com/VyomaKotak/prompt-strategy-eval" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6a4 4 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>Code</a>
         </div>
-        <div class="stack"><span class="chip">Python</span><span class="chip">LLM APIs</span><span class="chip">Prompt engineering</span><span class="chip">Evaluation</span></div>
-        <div class="pv">
-          <div class="lbl">Problem</div><div class="txt">Teams pick a prompting style by intuition. Which actually performs better, and by how much, usually goes unmeasured.</div>
-          <div class="lbl">Approach</div><div class="txt">A reproducible harness comparing zero-shot, few-shot and chain-of-thought prompting on a benchmark of maths word problems, scoring each answer against ground truth and reporting per-strategy accuracy. Ships with an offline mock mode so the full pipeline runs and tests without API cost.</div>
+        <div class="stack"><span class="chip">Python</span><span class="chip">LLM APIs</span><span class="chip">Prompt engineering</span><span class="chip">Benchmarking</span></div>
+        <div class="case-body">
+          <div class="pv">
+            <div class="lbl">Problem</div><div class="txt">Teams pick a prompting style on gut feel. Which one actually wins, and by how much, usually never gets measured.</div>
+            <div class="lbl">Approach</div><div class="txt">A reproducible harness scoring zero-shot, few-shot and chain-of-thought against ground truth on maths word problems, reporting per-strategy accuracy. Ships with an offline mock mode so the pipeline runs and tests with zero API spend.</div>
+          </div>
+          <div class="case-viz">
+            <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
+              <line x1="30" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
+              <rect class="grow" x="44" y="70" width="22" height="30" rx="3" fill="#d5c2e0"/>
+              <rect class="grow" x="82" y="52" width="22" height="48" rx="3" fill="#b891cc"/>
+              <rect class="grow" x="120" y="34" width="22" height="66" rx="3" fill="#8a5aa8"/>
+              <text x="55" y="112" fill="#87837a" font-size="7.5" text-anchor="middle">zero</text>
+              <text x="93" y="112" fill="#87837a" font-size="7.5" text-anchor="middle">few</text>
+              <text x="131" y="112" fill="#87837a" font-size="7.5" text-anchor="middle">CoT</text>
+            </svg>
+          </div>
         </div>
         <div class="pmetrics">
-          <div class="m"><div class="n">3</div><div class="c">strategies compared</div></div>
-          <div class="m"><div class="n">Offline</div><div class="c">mock mode included</div></div>
-          <div class="m"><div class="n">CSV</div><div class="c">reproducible output</div></div>
+          <div class="m"><div class="n">3</div><div class="c">strategies</div></div>
+          <div class="m"><div class="n">Offline</div><div class="c">mock mode</div></div>
+          <div class="m"><div class="n">CSV</div><div class="c">reproducible</div></div>
         </div>
       </article>
 
-      <article class="case" style="--accent:var(--amber)">
+      <article class="case" style="--acc:var(--plot-3);--acc-soft:#fbf3e4">
         <div class="case-top">
-          <div><h3>Chocolate Sales Revenue Predictor</h3><span class="flag">Regression · BI</span></div>
-          <a class="gh" href="https://github.com/VyomaKotak/Chocolate-Sales-Revenue-Predictor" target="_blank" rel="noopener">GitHub ↗</a>
+          <div class="titlewrap">
+            <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M19 9l-5 5-3-3-4 4"/></svg></div>
+            <div><h3>Chocolate Sales Revenue Predictor</h3><span class="flag">Regression · BI</span></div>
+          </div>
+          <a class="gh" href="https://github.com/VyomaKotak/Chocolate-Sales-Revenue-Predictor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6a4 4 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>Code</a>
         </div>
         <div class="stack"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">scikit-learn</span><span class="chip">Seaborn</span><span class="chip">joblib</span></div>
-        <div class="pv">
-          <div class="lbl">Problem</div><div class="txt">A multi-store chocolate retailer sees revenue swing widely across products, stores, seasons and customer segments, making performance hard to forecast.</div>
-          <div class="lbl">Approach</div><div class="txt">An end-to-end pipeline joining five relational tables into one analytical view, then feature engineering and four benchmarked regression models to predict transaction revenue for any product, store, customer and date, supporting inventory, pricing and expansion decisions.</div>
+        <div class="case-body">
+          <div class="pv">
+            <div class="lbl">Problem</div><div class="txt">A multi-store retailer's revenue swings across products, stores, seasons and segments, making it hard to plan stock or pricing.</div>
+            <div class="lbl">Approach</div><div class="txt">Five relational tables joined into one analytical view, then feature engineering and four benchmarked regressors predicting revenue for any product-store-customer-date, to guide inventory and expansion.</div>
+          </div>
+          <div class="case-viz">
+            <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
+              <line x1="30" y1="10" x2="30" y2="100" stroke="#d8d3c7"/><line x1="30" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
+              <circle cx="55" cy="82" r="3" fill="#e0a13c"/><circle cx="75" cy="70" r="3" fill="#e0a13c"/><circle cx="95" cy="60" r="3" fill="#e0a13c"/><circle cx="115" cy="48" r="3" fill="#e0a13c"/><circle cx="135" cy="40" r="3" fill="#e0a13c"/><circle cx="158" cy="28" r="3" fill="#e0a13c"/>
+              <path class="draw" d="M50 84 L162 26" stroke="#e0a13c" stroke-width="2" stroke-dasharray="4 3" pathLength="1"/>
+              <text x="105" y="20" fill="#e0a13c" font-size="9" text-anchor="middle">predicted vs actual</text>
+            </svg>
+          </div>
         </div>
         <div class="pmetrics">
           <div class="m"><div class="n">5</div><div class="c">tables joined</div></div>
-          <div class="m"><div class="n">4</div><div class="c">models benchmarked</div></div>
-          <div class="m"><div class="n">R²</div><div class="c">+ RMSE evaluated</div></div>
+          <div class="m"><div class="n">4</div><div class="c">models</div></div>
+          <div class="m"><div class="n">R²</div><div class="c">+ RMSE</div></div>
         </div>
       </article>
 
-      <article class="case" style="--accent:var(--cyan)">
+      <article class="case" style="--acc:var(--plot);--acc-soft:#fdeceb">
         <div class="case-top">
-          <div><h3>Gen Z Social Media Addiction Predictor</h3><span class="flag">Classification</span></div>
-          <a class="gh" href="https://github.com/VyomaKotak/GenZ-Social-Media-Addiction-Predictor" target="_blank" rel="noopener">GitHub ↗</a>
+          <div class="titlewrap">
+            <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+            <div><h3>Gen Z Social Media Addiction Predictor</h3><span class="flag">Classification</span></div>
+          </div>
+          <a class="gh" href="https://github.com/VyomaKotak/GenZ-Social-Media-Addiction-Predictor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6a4 4 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>Code</a>
         </div>
         <div class="stack"><span class="chip">Python</span><span class="chip">XGBoost</span><span class="chip">scikit-learn</span><span class="chip">Random Forest</span></div>
-        <div class="pv">
-          <div class="lbl">Problem</div><div class="txt">Social media addiction in Gen Z is linked to declining mental health and disrupted sleep. Spotting at-risk users early enables intervention before harm escalates.</div>
-          <div class="lbl">Approach</div><div class="txt">A multi-class classifier over a 1M-record behavioural dataset predicting Low, Medium or High risk. Random Forest importances drove feature selection, an XGBoost final model was tuned with 5-fold cross-validation on macro-F1, validated with per-class ROC/AUC and confusion matrices.</div>
+        <div class="case-body">
+          <div class="pv">
+            <div class="lbl">Problem</div><div class="txt">Heavy social-media use in Gen Z tracks with poorer mental health and sleep. Flagging at-risk users early makes intervention possible before harm sets in.</div>
+            <div class="lbl">Approach</div><div class="txt">A multi-class model over 1M behavioural records predicting Low, Medium or High risk. Feature selection from Random Forest importances, an XGBoost final tuned by 5-fold CV on macro-F1, checked with per-class ROC and confusion matrices.</div>
+          </div>
+          <div class="case-viz">
+            <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
+              <circle cx="95" cy="60" r="42" fill="none" stroke="#f6e4e1" stroke-width="16"/>
+              <circle cx="95" cy="60" r="42" fill="none" stroke="#f6d3cf" stroke-width="16" stroke-dasharray="132 264" transform="rotate(-90 95 60)"/>
+              <circle class="draw" cx="95" cy="60" r="42" fill="none" stroke="#e9645a" stroke-width="16" stroke-dasharray="90 264" stroke-dashoffset="0" transform="rotate(42 95 60)" pathLength="1"/>
+              <text x="95" y="64" fill="#1a1a17" font-size="11" text-anchor="middle" font-weight="600">3 classes</text>
+            </svg>
+          </div>
         </div>
         <div class="pmetrics">
           <div class="m"><div class="n">1<span class="u">M</span></div><div class="c">records</div></div>
           <div class="m"><div class="n">3</div><div class="c">risk classes</div></div>
-          <div class="m"><div class="n">5-fold</div><div class="c">cross-validation</div></div>
+          <div class="m"><div class="n">5-fold</div><div class="c">CV</div></div>
         </div>
       </article>
 
-      <article class="case" style="--accent:var(--violet)">
+      <article class="case" style="--acc:var(--plot-4);--acc-soft:#eef0fb">
         <div class="case-top">
-          <div><h3>BCG X Data Science Simulation — PowerCo Churn</h3><span class="flag">Case study · Forage</span></div>
-          <a class="gh" href="https://github.com/VyomaKotak/Forage-BCG-Data-Science-Simulation" target="_blank" rel="noopener">GitHub ↗</a>
+          <div class="titlewrap">
+            <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/></svg></div>
+            <div><h3>BCG X Simulation — PowerCo Churn</h3><span class="flag">Case study · Forage</span></div>
+          </div>
+          <a class="gh" href="https://github.com/VyomaKotak/Forage-BCG-Data-Science-Simulation" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6a4 4 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>Code</a>
         </div>
         <div class="stack"><span class="chip">Python</span><span class="chip">Random Forest</span><span class="chip">Feature engineering</span><span class="chip">EDA</span></div>
-        <div class="pv">
-          <div class="lbl">Problem</div><div class="txt">A European utility faced significant SME churn after market liberalisation and needed to test whether price sensitivity was the main driver, to support a targeted 20% discount intervention.</div>
-          <div class="lbl">Approach</div><div class="txt">A simulated BCG X junior data scientist brief carried end to end: EDA across 14,606 customers, 62 engineered predictive features, a tuned Random Forest churn model, and client-facing deliverables from the initial stakeholder email to the executive recommendation.</div>
+        <div class="case-body">
+          <div class="pv">
+            <div class="lbl">Problem</div><div class="txt">A European utility bleeding SME customers after deregulation needed to know whether price sensitivity was the real driver, to justify a targeted discount.</div>
+            <div class="lbl">Approach</div><div class="txt">The BCG X junior-DS brief carried end to end: EDA across 14,606 customers, 62 engineered features, a tuned Random Forest, and client-ready deliverables from first stakeholder email to executive recommendation.</div>
+          </div>
+          <div class="case-viz">
+            <svg viewBox="0 0 190 120" width="100%" fill="none" font-family="JetBrains Mono,monospace">
+              <line x1="60" y1="100" x2="180" y2="100" stroke="#d8d3c7"/>
+              <rect class="grow" x="70" y="30" width="18" height="70" rx="2" fill="#5566c4"/>
+              <rect class="grow" x="96" y="52" width="18" height="48" rx="2" fill="#8b98d8"/>
+              <rect class="grow" x="122" y="66" width="18" height="34" rx="2" fill="#b3bce6"/>
+              <rect class="grow" x="148" y="80" width="18" height="20" rx="2" fill="#ccd2ee"/>
+              <text x="118" y="20" fill="#5566c4" font-size="9" text-anchor="middle">feature importance</text>
+            </svg>
+          </div>
         </div>
         <div class="pmetrics">
           <div class="m"><div class="n">14,606</div><div class="c">customers</div></div>
-          <div class="m"><div class="n">62</div><div class="c">features engineered</div></div>
-          <div class="m"><div class="n">Forage</div><div class="c">BCG certified</div></div>
+          <div class="m"><div class="n">62</div><div class="c">features</div></div>
+          <div class="m"><div class="n">Forage</div><div class="c">certified</div></div>
         </div>
       </article>
 
@@ -483,50 +640,56 @@
 <!-- TOOLKIT -->
 <section id="tech">
   <div class="wrap reveal">
-    <div class="chapter">05 — My technical toolkit</div>
-    <h2 class="sec-title">A capability dashboard.</h2>
-    <p class="sec-intro">Software-engineering depth combined with data science, analytics and applied AI.</p>
+    <div class="chapter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.5-.5-.5-2.5z"/></svg>
+      Chapter 05 — The toolkit
+    </div>
+    <h2 class="sec-title">What I reach for.</h2>
+    <p class="sec-intro">Engineering discipline from four years of building systems, applied to data science and AI.</p>
     <div class="tech-grid">
-      <div class="techcard" style="--accent:var(--cyan);--accent-glow:var(--glow-cyan)"><div class="cat"><span class="dot"></span>Languages</div><div class="items"><span>Python</span><span>SQL</span><span>Java</span><span>Bash</span><span>pandas</span><span>NumPy</span></div></div>
-      <div class="techcard" style="--accent:var(--violet);--accent-glow:var(--glow-violet)"><div class="cat"><span class="dot"></span>Machine Learning</div><div class="items"><span>scikit-learn</span><span>XGBoost</span><span>NLP</span><span>Feature engineering</span><span>SHAP</span><span>A/B testing</span></div></div>
-      <div class="techcard" style="--accent:var(--pink);--accent-glow:rgba(244,114,182,.16)"><div class="cat"><span class="dot"></span>Deep Learning & GenAI</div><div class="items"><span>PyTorch</span><span>TensorFlow</span><span>CNNs</span><span>RNN/LSTM</span><span>LLMs</span><span>RAG</span><span>Agentic AI</span></div></div>
-      <div class="techcard" style="--accent:var(--lime);--accent-glow:rgba(163,230,53,.16)"><div class="cat"><span class="dot"></span>Big Data & Streaming</div><div class="items"><span>Apache Spark</span><span>Spark Structured Streaming</span><span>PySpark</span><span>Kafka</span><span>Airflow</span></div></div>
-      <div class="techcard" style="--accent:var(--amber);--accent-glow:rgba(251,191,36,.16)"><div class="cat"><span class="dot"></span>Cloud & DevOps</div><div class="items"><span>AWS (S3, EC2, SageMaker)</span><span>GCP (BigQuery)</span><span>Docker</span><span>FastAPI</span><span>CI/CD</span><span>Git</span></div></div>
-      <div class="techcard" style="--accent:var(--cyan);--accent-glow:var(--glow-cyan)"><div class="cat"><span class="dot"></span>Data & Visualisation</div><div class="items"><span>Power BI</span><span>Tableau</span><span>Advanced Excel</span><span>Oracle</span><span>MySQL</span><span>ETL</span></div></div>
+      <div class="techcard" style="--acc:var(--plot)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Programming languages</div><div class="items"><span>Python</span><span>SQL</span><span>Java</span><span>Bash</span></div></div>
+      <div class="techcard" style="--acc:var(--plot-2)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 12h16M12 4v16"/></svg>Libraries & frameworks</div><div class="items"><span>pandas</span><span>NumPy</span><span>scikit-learn</span><span>XGBoost</span><span>PyTorch</span><span>TensorFlow</span></div></div>
+      <div class="techcard" style="--acc:var(--plot-4)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg>Machine learning & AI</div><div class="items"><span>NLP</span><span>SHAP</span><span>Feature engineering</span><span>A/B testing</span><span>LLMs</span><span>RAG</span><span>Agentic AI</span></div></div>
+      <div class="techcard" style="--acc:var(--plot-5)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>Big data & streaming</div><div class="items"><span>Apache Spark</span><span>Spark Structured Streaming</span><span>PySpark</span><span>Kafka</span><span>Airflow</span></div></div>
+      <div class="techcard" style="--acc:var(--plot-3)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.3A7 7 0 1 0 4 15.8"/><path d="M8 16a5 5 0 1 1 10 0 4 4 0 0 1-1 8H9a4 4 0 0 1-1-8z"/></svg>Cloud & deployment</div><div class="items"><span>AWS (S3, EC2, SageMaker)</span><span>GCP (BigQuery)</span><span>Docker</span><span>FastAPI</span><span>CI/CD</span><span>Git</span></div></div>
+      <div class="techcard" style="--acc:var(--plot-2)"><div class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8"/><rect x="13" y="6" width="3" height="12"/></svg>Analytics & visualisation</div><div class="items"><span>Power BI</span><span>Tableau</span><span>Advanced Excel</span><span>Oracle</span><span>MySQL</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE TIMELINE -->
-<section id="journey" style="padding-top:20px">
+<!-- JOURNEY -->
+<section id="journey" class="alt">
   <div class="wrap reveal">
-    <div class="chapter violet">06 — The journey here</div>
-    <h2 class="sec-title">From keeping systems alive to building on top of them.</h2>
+    <div class="chapter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9l7-7 7 7"/></svg>
+      Chapter 06 — How I got here
+    </div>
+    <h2 class="sec-title">Systems first. Then the data on top.</h2>
     <div class="tl" style="margin-top:36px">
       <div class="tl-item">
         <div class="tl-when">Mar 2026 — Present</div>
-        <div class="tl-role">Data Analyst <span class="at">· Analytics Leap, Coventry</span></div>
+        <div class="tl-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>Data Analyst <span class="at">· Analytics Leap, Coventry</span></div>
         <ul>
-          <li>Designed practical analytics content across Python, SQL, Power BI, Tableau and Excel using real datasets</li>
+          <li>Designed practical analytics content across Python, SQL, Power BI, Tableau and Excel on real datasets</li>
           <li>Built 50+ hands-on exercises, case studies and dashboard projects</li>
-          <li>Reduced outdated technical references by 30% through review against industry best practice</li>
+          <li>Cut outdated technical references by 30% by reviewing material against current best practice</li>
         </ul>
       </div>
       <div class="tl-item">
         <div class="tl-when">Mar 2024 — Jan 2026</div>
-        <div class="tl-role">System Engineer, Python Developer <span class="at">· TCS, India</span></div>
+        <div class="tl-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Systems Engineer, Python Developer <span class="at">· TCS</span></div>
         <ul>
-          <li>Built and maintained Python web apps and REST APIs with Django and Flask across release cycles</li>
-          <li>Cut average API response times by 30–40% by reworking database queries and application logic</li>
-          <li>Automated data processing and reporting to save the support team 8–10 hours weekly</li>
+          <li>Built and maintained Python web apps and REST APIs (Django, Flask) across release cycles</li>
+          <li>Cut average API response times 30–40% by reworking queries and application logic</li>
+          <li>Automated reporting to save the support team 8–10 hours of manual work weekly</li>
         </ul>
       </div>
       <div class="tl-item past">
         <div class="tl-when">Dec 2021 — Mar 2024</div>
-        <div class="tl-role">System Engineer, SAP BASIS <span class="at">· TCS, India</span></div>
+        <div class="tl-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg>Systems Engineer, SAP BASIS <span class="at">· TCS</span></div>
         <ul>
-          <li>Owned SAP ECC, NetWeaver (PI/PO) and dual-stack BW/BPC systems for global clients, around the clock</li>
-          <li>Resolved database locks, memory bottlenecks and long-running jobs, reducing downtime</li>
+          <li>Ran SAP ECC, NetWeaver (PI/PO) and dual-stack BW/BPC for global clients, around the clock</li>
+          <li>Resolved database locks, memory bottlenecks and long-running jobs to reduce downtime</li>
           <li>Applied critical SAP Notes, kernel upgrades and support packages to close security gaps</li>
         </ul>
       </div>
@@ -534,56 +697,62 @@
   </div>
 </section>
 
-<!-- WHY HIRE ME -->
+<!-- WHY HIRE -->
 <section id="hire">
   <div class="wrap reveal">
-    <div class="chapter amber">07 — Why hire me</div>
+    <div class="chapter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9"/></svg>
+      Chapter 07 — Why bring me in
+    </div>
     <div class="why">
-      <h2 class="sec-title" style="margin-bottom:10px">The case, in five lines.</h2>
-      <p style="color:var(--txt-2);max-width:58ch">What I offer a team is not just models. It's the whole path from raw data to a decision a business can act on, built to stay up.</p>
+      <h2 class="sec-title" style="margin-bottom:10px">What you're actually hiring.</h2>
+      <p style="color:var(--ink-2);max-width:58ch">Not just a model in a notebook, but the whole route from raw data to a decision a team can stand behind, built to keep working.</p>
       <div class="why-grid">
-        <div class="why-item"><span class="n">01</span><div><h4>End-to-end ownership</h4><p>I take a problem from ingestion through modelling to a served, monitored, containerised system. No handoff gaps.</p></div></div>
-        <div class="why-item"><span class="n">02</span><div><h4>A genuine production mindset</h4><p>Four years on call for enterprise systems. Reliability, monitoring and reproducibility are instincts, not checklists.</p></div></div>
-        <div class="why-item"><span class="n">03</span><div><h4>Data, AI and business value connected</h4><p>I choose metrics that reflect the real cost, and expose the tradeoffs so the business, not the default, makes the call.</p></div></div>
-        <div class="why-item"><span class="n">04</span><div><h4>Communication that lands</h4><p>Mentoring and stakeholder work taught me to explain clearly to people who don't share my vocabulary.</p></div></div>
-        <div class="why-item"><span class="n">05</span><div><h4>Always going deeper</h4><p>Currently pushing into LLMs, RAG and agentic workflows, closing the gap between a prototype and a production AI system.</p></div></div>
+        <div class="why-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><div><h4>End-to-end ownership</h4><p>Ingestion through modelling to a served, monitored, containerised system. No handoff gaps for problems to hide in.</p></div></div>
+        <div class="why-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>A real production mindset</h4><p>Four years on call taught me that reliability, monitoring and reproducibility are the job, not the polish at the end.</p></div></div>
+        <div class="why-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div><div><h4>Data tied to the business</h4><p>I pick metrics that mirror real cost and surface the trade-offs, so the decision belongs to the business, not a default setting.</p></div></div>
+        <div class="why-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><h4>Communication that lands</h4><p>Mentoring and stakeholder work taught me to make the complicated make sense to people who don't share the jargon.</p></div></div>
+        <div class="why-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2zM9 21h6"/></svg></div><div><h4>Always going deeper</h4><p>Currently pushing into LLMs, RAG and agentic workflows, closing the distance between a prototype and a system in production.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EDU + CERTS -->
-<section id="credentials" style="padding-top:20px">
+<!-- CREDENTIALS -->
+<section id="credentials">
   <div class="wrap reveal two">
     <div>
-      <div class="mini-h">Education</div>
+      <div class="mini-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Education</div>
       <div class="edu-item"><div class="d">MSc Data Science</div><div class="s">Coventry University, UK · Jan 2026 – Present</div></div>
       <div class="edu-item"><div class="d">BE Electronics & Communication</div><div class="s">Gujarat Technological University · 8.61 CGPA · 2017–2021</div></div>
     </div>
     <div>
-      <div class="mini-h">Certifications & recognition</div>
+      <div class="mini-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.9L7 22l5-3 5 3-1.2-8.1"/></svg>Certifications & recognition</div>
       <ul class="cert-list">
-        <li>AI Fluency: Framework & Foundations — Anthropic (2026)</li>
-        <li>SAP Certified Specialist — S/4 HANA Conversion & System Upgrade</li>
-        <li>BCG X Data Science Job Simulation — Forage</li>
-        <li>Elevate Wings1 'Hi-Talent' — TCS performance recognition</li>
-        <li>Life Skills Mentor — Kotak Education Foundation</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>AI Fluency: Framework & Foundations — Anthropic (2026)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>SAP Certified Specialist — S/4 HANA Conversion & System Upgrade</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>BCG X Data Science Job Simulation — Forage</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>Elevate Wings1 'Hi-Talent' — TCS performance recognition</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>Life Skills Mentor — Kotak Education Foundation</li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact">
+<section id="contact" class="contact alt">
   <div class="wrap reveal">
-    <div class="chapter pink" style="justify-content:center">08 — Let's create something meaningful</div>
-    <h2>Let's build something that <span class="grad">stays up.</span></h2>
-    <p>I'm open to Graduate, Junior and Associate Data Science, ML, AI and Data Engineering roles across the UK. If that's the kind of team you're building, I'd be glad to talk. Skilled Worker sponsorship required.</p>
+    <div class="chapter" style="justify-content:center">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+      Chapter 08 — Say hello
+    </div>
+    <h2>Got a hard data problem? <em>Let's talk.</em></h2>
+    <p>I'm open to Graduate, Junior and Associate Data Science, ML, AI and Data Engineering roles across the UK. If your team cares about data that drives real decisions, I'd love to hear from you.</p>
     <div class="cta-row" style="justify-content:center">
-      <a class="btn primary" href="mailto:vyomakotak@gmail.com">vyomakotak@gmail.com</a>
-      <a class="btn ghost" href="https://linkedin.com/in/vyoma-kotak" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn ghost" href="https://github.com/VyomaKotak" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn ghost" href="cv.pdf" download>Download CV</a>
+      <a class="btn primary" href="mailto:vyomakotak@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>vyomakotak@gmail.com</a>
+      <a class="btn ghost" href="https://linkedin.com/in/vyoma-kotak" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.3 18V10H5.7v8h2.6zM7 8.8a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM18.3 18v-4.4c0-2.4-1.3-3.5-3-3.5a2.6 2.6 0 0 0-2.3 1.3V10H10.4v8H13v-4.4c0-1.2.8-1.6 1.4-1.6s1.3.5 1.3 1.6V18h2.6z"/></svg>LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/VyomaKotak" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6a4 4 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+      <a class="btn ghost" href="cv.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>CV</a>
     </div>
   </div>
 </section>
@@ -592,30 +761,29 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Vyoma Kotak · London, UK</span>
-    <span><a href="https://github.com/VyomaKotak" target="_blank" rel="noopener">GitHub</a> · <a href="https://linkedin.com/in/vyoma-kotak" target="_blank" rel="noopener">LinkedIn</a> · Built from scratch</span>
+    <span>Designed &amp; built from scratch · no template</span>
   </div>
 </footer>
 
 <script>
-  // scroll progress
   const bar=document.getElementById('progress');
   const onScroll=()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';};
   document.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  // reveal
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+    e.target.classList.add('in');
+    e.target.querySelectorAll&&e.target.querySelectorAll('.draw').forEach(d=>d.classList.add('in'));
+    io.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  document.querySelectorAll('.draw').forEach(el=>io.observe(el));
 
-  // metric counters
   const fmt=(v,dec)=>dec?v.toFixed(dec):Math.round(v).toString();
   const runCount=(el)=>{
-    const target=parseFloat(el.dataset.target), dec=parseInt(el.dataset.dec||0), suf=el.dataset.suffix||'';
-    const dur=1300, t0=performance.now();
-    const step=(t)=>{
-      const p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,3);
+    const target=parseFloat(el.dataset.target),dec=parseInt(el.dataset.dec||0),suf=el.dataset.suffix||'';
+    const dur=1300,t0=performance.now();
+    const step=(t)=>{const p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);
       el.innerHTML=fmt(target*e,dec)+(suf?'<span class="u">'+suf+'</span>':'');
-      if(p<1)requestAnimationFrame(step);
-    };
+      if(p<1)requestAnimationFrame(step);};
     requestAnimationFrame(step);
   };
   const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){runCount(e.target);cio.unobserve(e.target)}})},{threshold:.6});
