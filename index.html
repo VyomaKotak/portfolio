@@ -33,7 +33,7 @@
     --display:'Fraunces',Georgia,serif;
     --body:'Inter',system-ui,sans-serif;
     --mono:'JetBrains Mono',ui-monospace,monospace;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -24px rgba(0,0,0,.7);
+    --shadow:0 2px 4px rgba(0,0,0,.2),0 24px 48px -20px rgba(0,0,0,.55);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -54,15 +54,15 @@
   #progress{position:fixed;top:0;left:0;height:2.5px;width:0;background:var(--plot);z-index:100;transition:width .1s linear}
 
   /* nav */
-  nav.top{position:sticky;top:0;z-index:60;background:rgba(250,249,246,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  nav.top{position:sticky;top:14px;z-index:60;margin:14px auto 0;max-width:1120px;background:rgba(20,25,36,.82);backdrop-filter:blur(14px);border:1px solid var(--line-2);border-radius:999px;box-shadow:0 4px 24px rgba(0,0,0,.35)}
+  nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 30px}
   .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;font-size:1.08rem}
   .monogram{width:34px;height:34px}
   .navlinks{display:flex;gap:24px;font-size:13.5px;font-weight:450;color:var(--ink-2);font-family:var(--mono)}
   .navlinks a{transition:color .18s}
   .navlinks a:hover{color:var(--plot)}
   @media(max-width:860px){.navlinks{display:none}}
-  .nav-cta{font-family:var(--mono);font-size:13px;padding:8px 15px;border:1px solid var(--line-2);border-radius:8px;color:var(--ink);transition:.2s;display:inline-flex;gap:7px;align-items:center;background:var(--card)}
+  .nav-cta{font-family:var(--mono);font-size:13px;padding:8px 18px;border:1px solid var(--line-2);border-radius:999px;color:var(--ink);transition:.2s;display:inline-flex;gap:7px;align-items:center;background:var(--card)}
   .nav-cta:hover{border-color:var(--plot);color:var(--plot);box-shadow:0 0 16px var(--plot-soft)}
 
   /* hero */
@@ -79,7 +79,7 @@
   .hero .sub{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);margin-bottom:30px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
   .hero .sub svg{width:14px;height:14px;opacity:.7}
   .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-  .btn{font-family:var(--mono);font-size:13.5px;font-weight:500;padding:12px 20px;border-radius:9px;transition:.2s;display:inline-flex;gap:8px;align-items:center;border:1px solid transparent;cursor:pointer}
+  .btn{font-family:var(--mono);font-size:13.5px;font-weight:500;padding:12px 22px;border-radius:20px;transition:.2s;display:inline-flex;gap:8px;align-items:center;border:1px solid transparent;cursor:pointer}
   .btn svg{width:15px;height:15px}
   .btn.primary{background:linear-gradient(120deg,var(--plot),var(--plot-4));color:#08131a;font-weight:600}
   .btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 26px -8px var(--plot-soft)}
@@ -88,13 +88,13 @@
 
   /* hero photo as a "figure" */
   .figure{position:relative}
-  .figure .frame{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);aspect-ratio:896/1010}
+  .figure .frame{border:1px solid var(--line-2);border-radius:40px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);aspect-ratio:896/1010}
   .figure .frame img{width:100%;height:100%;object-fit:cover;object-position:center 16%}
   .figure .cap{position:absolute;left:-1px;bottom:-1px;background:var(--plot);color:#08131a;font-family:var(--mono);font-size:11px;padding:7px 12px;border-radius:0 12px 0 12px;letter-spacing:.02em}
   .figure .tag{position:absolute;top:12px;right:12px;background:var(--card);border:1px solid var(--line-2);font-family:var(--mono);font-size:10.5px;color:var(--ink-2);padding:5px 10px;border-radius:7px;box-shadow:var(--shadow)}
   @media(max-width:880px){.figure{max-width:330px;margin:0 auto}}
   /* signature code block */
-  .codesig{margin-top:16px;background:#0d1119;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-family:var(--mono);font-size:12px;box-shadow:var(--shadow)}
+  .codesig{margin-top:18px;background:#0d1119;border:1px solid var(--line);border-radius:24px;overflow:hidden;font-family:var(--mono);font-size:12px;box-shadow:var(--shadow)}
   .codesig .bar{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--paper-2)}
   .codesig .dots{display:flex;gap:6px}
   .codesig .dots i{width:9px;height:9px;border-radius:50%;display:block}
@@ -107,9 +107,10 @@
   .codesig .k{color:var(--plot-4)}.codesig .s{color:var(--plot-2)}.codesig .f{color:var(--plot)}.codesig .c{color:var(--ink-3)}.codesig .n{color:var(--plot-3)}
 
   /* section scaffolding */
-  section{padding:80px 0}
-  .chapter{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--plot);margin-bottom:14px;display:flex;align-items:center;gap:10px}
-  .chapter svg{width:15px;height:15px}
+  section{padding:100px 0}
+  .chapter{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--plot);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+  .chapter::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--plot);box-shadow:0 0 8px var(--plot);flex-shrink:0}
+  .chapter svg{width:14px;height:14px}
   .sec-title{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-.02em;margin-bottom:16px;line-height:1.1}
   .sec-title em{font-style:italic;color:var(--plot)}
   .sec-intro{color:var(--ink-2);max-width:62ch;margin-bottom:44px}
@@ -122,7 +123,7 @@
   .story p strong{color:var(--ink);font-weight:600}
   .story .pull{font-family:var(--display);font-size:1.5rem;line-height:1.36;color:var(--ink);font-weight:500;margin-bottom:22px;letter-spacing:-.01em}
   .story .pull em{font-style:italic;color:var(--plot)}
-  .spec{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px;height:fit-content;box-shadow:var(--shadow)}
+  .spec{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:22px;height:fit-content;box-shadow:var(--shadow)}
   .spec .row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
   .spec .row:last-child{border-bottom:0;padding-bottom:0}.spec .row:first-child{padding-top:0}
   .spec .k{font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3);display:flex;gap:7px;align-items:center}
@@ -132,7 +133,7 @@
   /* metrics with sparkline vibe */
   .metrics-band{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   @media(max-width:680px){.metrics-band{grid-template-columns:repeat(2,1fr)}}
-  .mcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .mcard{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
   .mcard .n{font-family:var(--display);font-weight:700;font-size:2.2rem;line-height:1;letter-spacing:-.02em}
   .mcard .n .u{font-size:1rem;color:var(--acc,var(--plot))}
   .mcard .c{font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-3);margin-top:8px}
@@ -141,7 +142,7 @@
   /* principles */
   .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   @media(max-width:840px){.principles{grid-template-columns:1fr}}
-  .principle{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:26px;box-shadow:var(--shadow);transition:.22s}
+  .principle{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:var(--shadow);transition:.22s}
   .principle:hover{transform:translateY(-3px);border-color:var(--line-2)}
   .principle .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;margin-bottom:15px;background:var(--paper-2);border:1px solid var(--line)}
   .principle .ic svg{width:21px;height:21px;color:var(--acc,var(--plot))}
@@ -154,19 +155,19 @@
 
   /* cases */
   .cases{display:flex;flex-direction:column;gap:22px}
-  .case{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:30px 32px;box-shadow:var(--shadow);transition:.22s;position:relative}
-  .case:hover{transform:translateY(-2px);border-color:var(--line-2)}
+  .case{background:var(--card);border:1px solid var(--line);border-radius:36px;padding:30px 32px;box-shadow:var(--shadow);transition:.22s;position:relative}
+  .case:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 2px 4px rgba(0,0,0,.2),0 40px 70px -30px rgba(0,0,0,.6)}
   .case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:12px}
   .case .titlewrap{display:flex;gap:13px;align-items:flex-start}
   .case .pic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--acc-soft,rgba(34,211,238,.12));flex-shrink:0;margin-top:2px}
   .case .pic svg{width:20px;height:20px;color:var(--acc,var(--plot))}
   .case h3{font-family:var(--display);font-weight:600;font-size:1.32rem;letter-spacing:-.01em}
-  .case .flag{font-family:var(--mono);font-size:10.5px;color:var(--acc,var(--plot));border:1px solid var(--line-2);border-radius:6px;padding:3px 8px;margin-top:6px;display:inline-block}
-  .case .gh{font-family:var(--mono);font-size:12px;color:var(--ink-2);border:1px solid var(--line-2);border-radius:8px;padding:8px 13px;transition:.2s;white-space:nowrap;display:inline-flex;gap:6px;align-items:center}
+  .case .flag{font-family:var(--mono);font-size:10.5px;color:var(--acc,var(--plot));border:1px solid var(--line-2);border-radius:999px;padding:3px 11px;margin-top:6px;display:inline-block}
+  .case .gh{font-family:var(--mono);font-size:12px;color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:8px 15px;transition:.2s;white-space:nowrap;display:inline-flex;gap:6px;align-items:center}
   .case .gh svg{width:14px;height:14px}
   .case .gh:hover{border-color:var(--acc,var(--plot));color:var(--acc,var(--plot))}
   .stack{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 18px}
-  .chip{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:4px 10px}
+  .chip{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
   .case-body{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}
   @media(max-width:720px){.case-body{grid-template-columns:1fr;gap:18px}}
   .pv{display:grid;grid-template-columns:auto 1fr;gap:8px 15px}
@@ -184,12 +185,12 @@
   .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   @media(max-width:840px){.tech-grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:520px){.tech-grid{grid-template-columns:1fr}}
-  .techcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);transition:.22s}
+  .techcard{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:var(--shadow);transition:.22s}
   .techcard:hover{transform:translateY(-3px);border-color:var(--acc,var(--plot))}
   .techcard .cat{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--acc,var(--plot));margin-bottom:14px;display:flex;align-items:center;gap:9px}
   .techcard .cat svg{width:16px;height:16px}
   .techcard .items{display:flex;flex-wrap:wrap;gap:7px}
-  .techcard .items span{font-size:12.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:7px;padding:5px 10px;transition:.16s}
+  .techcard .items span{font-size:12.5px;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;transition:.16s}
   .techcard .items span:hover{border-color:var(--acc,var(--plot));color:var(--ink);transform:translateY(-1px)}
 
   /* timeline */
@@ -208,7 +209,7 @@
   .tl li::before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--plot-2)}
 
   /* why hire */
-  .why{background:var(--card);border:1px solid var(--line-2);border-radius:20px;padding:42px;box-shadow:var(--shadow)}
+  .why{background:var(--card);border:1px solid var(--line-2);border-radius:40px;padding:42px;box-shadow:var(--shadow)}
   @media(max-width:600px){.why{padding:28px 22px}}
   .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:10px}
   @media(max-width:680px){.why-grid{grid-template-columns:1fr}}
@@ -223,7 +224,7 @@
   @media(max-width:720px){.two{grid-template-columns:1fr;gap:32px}}
   .mini-h{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--plot-3);margin-bottom:18px;display:flex;gap:8px;align-items:center}
   .mini-h svg{width:15px;height:15px}
-  .edu-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:19px;margin-bottom:13px;box-shadow:var(--shadow)}
+  .edu-item{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:19px;margin-bottom:13px;box-shadow:var(--shadow)}
   .edu-item .d{font-family:var(--display);font-weight:600;font-size:1.05rem}
   .edu-item .s{color:var(--ink-3);font-size:13px;margin-top:2px;font-family:var(--mono)}
   .cert-list{list-style:none}
@@ -318,9 +319,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- WHO -->
 <section id="who">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg>
-      Chapter 01 — The short version
+    <div class="chapter">Chapter 01 — The short version
     </div>
     <div class="story-grid story">
       <div>
@@ -343,9 +342,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- PROBLEM + metrics -->
 <section id="problem" class="alt">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
-      Chapter 02 — The thing I keep chasing
+    <div class="chapter">Chapter 02 — The thing I keep chasing
     </div>
     <h2 class="sec-title">Signal, pulled out of <em>noise</em>, at a scale that matters.</h2>
     <p class="sec-intro">Almost every problem I enjoy reduces to one shape: a large, messy, real-world dataset that clearly contains an answer, and the engineering work needed to get that answer out reliably and fast enough to act on. Here is that instinct, in numbers.</p>
@@ -373,9 +370,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- APPROACH + architecture diagram -->
 <section id="think">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/><path d="M9 21h6M10 17v4M14 17v4"/></svg>
-      Chapter 03 — How I actually work
+    <div class="chapter">Chapter 03 — How I actually work
     </div>
     <h2 class="sec-title">Three convictions, earned the hard way.</h2>
     <p class="sec-intro">Four years on call for systems that couldn't go down left me with a few opinions about how machine learning should be built.</p>
@@ -403,9 +398,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- WORK -->
 <section id="work" class="alt">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
-      Chapter 04 — Selected work
+    <div class="chapter">Chapter 04 — Selected work
     </div>
     <h2 class="sec-title">Seven builds, each solving a <em>real</em> problem.</h2>
     <p class="sec-intro">Not tutorials rerun with new data. Each of these started from a question a business would actually ask, and ends with something measurable.</p>
@@ -646,9 +639,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- TOOLKIT -->
 <section id="tech">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.5-.5-.5-2.5z"/></svg>
-      Chapter 05 — The toolkit
+    <div class="chapter">Chapter 05 — The toolkit
     </div>
     <h2 class="sec-title">What I reach for.</h2>
     <p class="sec-intro">Engineering discipline from four years of building systems, applied to data science and AI.</p>
@@ -666,9 +657,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- JOURNEY -->
 <section id="journey" class="alt">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9l7-7 7 7"/></svg>
-      Chapter 06 — How I got here
+    <div class="chapter">Chapter 06 — How I got here
     </div>
     <h2 class="sec-title">Systems first. Then the data on top.</h2>
     <div class="tl" style="margin-top:36px">
@@ -706,9 +695,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- WHY HIRE -->
 <section id="hire">
   <div class="wrap reveal">
-    <div class="chapter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9"/></svg>
-      Chapter 07 — Why bring me in
+    <div class="chapter">Chapter 07 — Why bring me in
     </div>
     <div class="why">
       <h2 class="sec-title" style="margin-bottom:10px">What you're actually hiring.</h2>
@@ -748,9 +735,7 @@ me.<span class="f">hire</span>()  <span class="c"># let's talk</span></pre>
 <!-- CONTACT -->
 <section id="contact" class="contact alt">
   <div class="wrap reveal">
-    <div class="chapter" style="justify-content:center">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
-      Chapter 08 — Say hello
+    <div class="chapter" style="justify-content:center">Chapter 08 — Say hello
     </div>
     <h2>Got a hard data problem? <em>Let's talk.</em></h2>
     <p>I'm open to Graduate, Junior and Associate Data Science, ML, AI and Data Engineering roles across the UK. If your team cares about data that drives real decisions, I'd love to hear from you.</p>
